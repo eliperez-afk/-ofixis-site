@@ -1,6 +1,6 @@
 # OFIXIS — Inventaire des contenus et des données
 
-**Mise à jour :** 10 septembre 2026
+**Mise à jour :** 10 septembre 2026 (identité légale confirmée)
 **Règle :** aucune ligne au statut `À CONFIRMER` ou `INTERDIT` ne peut être publiée.
 Le passage au statut `CONFIRMÉ` exige une validation écrite du dirigeant,
 horodatée, reportée dans la colonne « Validé par / le ».
@@ -17,19 +17,32 @@ horodatée, reportée dans la colonne « Validé par / le ».
 
 | # | Information | Valeur relevée | Source | Date source | Statut | Validé par / le |
 |---|---|---|---|---|---|---|
-| L1 | Dénomination sociale exacte | Ofixis / OFIXIS | mentions légales du site + registres | 2026-09-09 | À CONFIRMER | |
-| L2 | Forme juridique | SARL | mentions légales + registres publics | 2026-09-09 | À CONFIRMER | |
-| L3 | Capital social | 1 000 € | mentions légales du site | 2026-09-09 | À CONFIRMER | |
-| L4 | SIREN | 841 080 971 | mentions légales + `annuaire-entreprises.data.gouv.fr` | 2026-09-09 | À CONFIRMER | |
-| L5 | Ville du RCS | Bobigny (site) / Nanterre si siège à Levallois | mentions légales vs registres | 2026-09-09 | **CONTRADICTOIRE** | |
-| L6 | Siège social | 2 rue de l'Union, 93130 Noisy-le-Sec (site) **vs** Levallois-Perret (registres, 90 rue Chaptal 92300) | mentions légales vs registres + annuaire OEC | 2026-09-09 | **CONTRADICTOIRE** | |
-| L7 | Directeur de la publication | M. Eli PEREZ | mentions légales du site | 2026-09-09 | À CONFIRMER | |
-| L8 | N° TVA intracommunautaire | — non collecté | — | — | À CONFIRMER | |
-| L9 | Hébergeur (nom, raison sociale, adresse, téléphone) | — non collecté | — | — | À CONFIRMER | |
-| L10 | N° inscription Ordre des experts-comptables IDF | 140000548701 | site actuel | 2026-09-09 | À CONFIRMER | |
-| L11 | N° inscription CNCC | 4100090432 | site actuel | 2026-09-09 | À CONFIRMER | |
-| L12 | Assurance RCP (assureur, n° de police, couverture géographique) | — non collecté | — | — | À CONFIRMER | |
-| L13 | Médiation de la consommation / réclamations | — non collecté | — | — | À CONFIRMER | |
+| L1 | Dénomination sociale exacte | **OFIXIS** | dirigeant | 2026-09-10 | **CONFIRMÉ** | Dirigeant, 2026-09-10 |
+| L2 | Forme juridique | **Société à responsabilité limitée** | dirigeant | 2026-09-10 | **CONFIRMÉ** | Dirigeant, 2026-09-10 |
+| L3 | Capital social | **1 000 €** | dirigeant | 2026-09-10 | **CONFIRMÉ** | Dirigeant, 2026-09-10 |
+| L4 | SIREN | **841 080 971** | dirigeant | 2026-09-10 | **CONFIRMÉ** | Dirigeant, 2026-09-10 |
+| L5 | Ville du RCS | **Nanterre** | dirigeant | 2026-09-10 | **CONFIRMÉ** — l'incohérence « RCS Bobigny » de l'ancien site est levée | Dirigeant, 2026-09-10 |
+| L6 | Siège social | **90 rue Chaptal, 92300 Levallois-Perret** | dirigeant | 2026-09-10 | **CONFIRMÉ** | Dirigeant, 2026-09-10 |
+| L7 | Directeur de la publication | Eli Perez (ancien site) | ancien site | 2026-09-09 | À CONFIRMER — nom, prénom et fonction exacte | |
+| L8 | N° TVA intracommunautaire | — non communiqué | — | — | À CONFIRMER | |
+| L9 | Hébergeur (nom, raison sociale, adresse, téléphone) | — non arrêté | — | — | À CONFIRMER — sera renseigné par l'équipe projet si Vercel est validé | |
+| L10 | N° inscription Ordre des experts-comptables IDF | 140000548701 | ancien site | 2026-09-09 | À CONFIRMER | |
+| L11 | N° inscription CNCC | 4100090432 | ancien site | 2026-09-09 | À CONFIRMER | |
+| L12 | Assurance RCP — courtier | Verspieren, 1 av. François Mitterrand, BP 30200, 59446 Wasquehal Cedex (ORIAS 07 001 542) | appel de prime **2020** | 2020 | **À CONFIRMER — pièce périmée** | |
+| L13 | Assurance RCP — assureur | MMA IARD / MMA IARD Assurances Mutuelles, 160 rue Henri Champion, 72030 Le Mans Cedex 9 | appel de prime **2020** | 2020 | **À CONFIRMER — pièce périmée** | |
+| L14 | Assurance RCP — n° de police | 118269730 | appel de prime **2020** | 2020 | **À CONFIRMER — pièce périmée** | |
+| L15 | Assurance RCP — couverture géographique | — non indiquée sur la pièce transmise | — | — | À CONFIRMER | |
+| L16 | Médiation de la consommation / réclamations | — non collecté | — | — | À CONFIRMER | |
+
+> **L12 à L15 — pièce justificative insuffisante.** Le document transmis le
+> 10 septembre 2026 est un **appel de prime portant sur l'exercice 2020**,
+> vieux de six ans. Il atteste qu'un contrat existait alors ; il ne prouve pas
+> la couverture actuelle, et l'assureur comme le numéro de police ont pu
+> changer depuis. Publier ces éléments reviendrait à diffuser une information
+> inexacte (art. 152 du Code de déontologie).
+> **Pièce attendue : l'attestation d'assurance RC professionnelle de
+> l'exercice en cours**, qui porte l'assureur, le numéro de police, la période
+> de validité et la couverture géographique.
 
 > **L5/L6 sont bloquants avant mise en production.** Des mentions légales
 > inexactes contreviennent à l'article 6-III de la LCEN et fragilisent
@@ -42,7 +55,7 @@ horodatée, reportée dans la colonne « Validé par / le ».
 | C1 | **Téléphone unique du cabinet** | **06 50 28 12 86** | **Dirigeant, 2026-09-09** | 2026-09-09 | **CONFIRMÉ** — ligne mobile à titre provisoire, une ligne fixe est en cours de création |
 | C2 | ~~01 89 41 04 76~~ | retiré | Dirigeant : donnée erronée | 2026-09-09 | **RETIRÉ DU SITE** |
 | C3 | ~~01 85 05 26 94~~ | retiré | Annuaires tiers — à faire corriger | 2026-09-09 | **RETIRÉ DU SITE** |
-| C4 | E-mail public | contact@ofixis.fr | site actuel | 2026-09-09 | À CONFIRMER |
+| C4 | E-mail public | **contact@ofixis.fr** | dirigeant | 2026-09-10 | **CONFIRMÉ** |
 | C5 | Destinataires internes des formulaires | — non collecté | — | — | À CONFIRMER |
 | C6 | Délai de rappel réellement tenable | — non collecté | — | — | À CONFIRMER |
 | C7 | Horaires d'ouverture par bureau | — non collecté | — | — | À CONFIRMER |

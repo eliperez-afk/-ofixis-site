@@ -34,8 +34,9 @@ const aConfirmer = <T,>(valeur: T, source: string): Donnee<T> => ({
   source,
 });
 
-/** Validation du dirigeant, 9 septembre 2026. */
+/** Validations écrites du dirigeant. */
 const VALIDATION_DIRIGEANT = "Validé par le dirigeant le 2026-09-09";
+const VALIDATION_MENTIONS = "Mentions légales transmises par le dirigeant le 2026-09-10";
 
 export const CABINET = {
   nom: "OFIXIS",
@@ -74,7 +75,7 @@ export const CABINET = {
     VALIDATION_DIRIGEANT,
   ),
 
-  email: aConfirmer("contact@ofixis.fr", "Ancien site — à reconfirmer"),
+  email: confirme("contact@ofixis.fr", VALIDATION_MENTIONS),
 
   /** Horaires d'ouverture — non communiqués à ce jour. */
   horaires: aConfirmer<null | { jours: string; heures: string }[]>(
@@ -84,19 +85,19 @@ export const CABINET = {
 
   // ── Identité légale ────────────────────────────────────────────────────
   legal: {
-    raisonSociale: aConfirmer("OFIXIS", "Registres publics — à reconfirmer"),
-    formeJuridique: aConfirmer("SARL", "Registres publics — à reconfirmer"),
-    capital: aConfirmer("1 000 €", "Ancien site — à reconfirmer"),
-    siren: aConfirmer(
-      "841 080 971",
-      "annuaire-entreprises.data.gouv.fr — à reconfirmer",
+    raisonSociale: confirme("OFIXIS", VALIDATION_MENTIONS),
+    formeJuridique: confirme(
+      "société à responsabilité limitée",
+      VALIDATION_MENTIONS,
     ),
+    capital: confirme("1 000 €", VALIDATION_MENTIONS),
+    siren: confirme("841 080 971", VALIDATION_MENTIONS),
     /**
-     * L'ancien site indiquait « RCS Bobigny », cohérent avec un siège à
-     * Noisy-le-Sec. Le siège étant désormais à Levallois-Perret, la ville
-     * du RCS doit être reconfirmée (Nanterre selon toute vraisemblance).
+     * L'ancien site indiquait « RCS Bobigny », cohérent avec l'ancien siège de
+     * Noisy-le-Sec. Le siège étant désormais à Levallois-Perret, le cabinet
+     * relève bien du RCS de Nanterre.
      */
-    villeRcs: aConfirmer("", "Incohérence relevée — arbitrage requis"),
+    villeRcs: confirme("Nanterre", VALIDATION_MENTIONS),
     tvaIntracommunautaire: aConfirmer("", "Non communiqué"),
     directeurPublication: aConfirmer("Eli Perez", "Ancien site — à reconfirmer"),
     numeroOrdre: aConfirmer("140000548701", "Ancien site — à reconfirmer"),
@@ -106,6 +107,33 @@ export const CABINET = {
       adresse: string;
       telephone: string;
     }>(null, "Hébergement non arrêté"),
+
+    /**
+     * Assurance de responsabilité civile professionnelle.
+     *
+     * Les éléments ci-dessous proviennent de l'appel de prime transmis par le
+     * cabinet, qui porte sur l'exercice **2020**. Ils ne sont pas publiables en
+     * l'état : l'assureur, le numéro de police et la couverture géographique
+     * doivent être confirmés par une attestation en cours de validité.
+     * Publier des garanties périmées serait une information inexacte au sens
+     * de l'article 152 du Code de déontologie.
+     */
+    assuranceRcp: aConfirmer<null | {
+      assureur: string;
+      courtier: string;
+      numeroPolice: string;
+      couvertureGeographique: string;
+    }>(
+      {
+        assureur:
+          "MMA IARD / MMA IARD Assurances Mutuelles, 160 rue Henri Champion, 72030 Le Mans Cedex 9",
+        courtier:
+          "Verspieren, 1 avenue François Mitterrand, BP 30200, 59446 Wasquehal Cedex (ORIAS 07 001 542)",
+        numeroPolice: "118269730",
+        couvertureGeographique: "",
+      },
+      "Appel de prime 2020 — attestation en cours de validité requise",
+    ),
   },
 
   // ── Données personnelles ───────────────────────────────────────────────

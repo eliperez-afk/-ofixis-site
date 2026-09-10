@@ -1,6 +1,6 @@
 # OFIXIS — Statut du projet
 
-**Dernière mise à jour :** 10 septembre 2026
+**Dernière mise à jour :** 10 septembre 2026 (identité légale confirmée)
 **Phase en cours :** développement du site — **socle livré et fonctionnel**
 **Prochaine étape :** validation des contenus par le cabinet, puis préproduction hébergée
 
@@ -90,7 +90,7 @@ affichée par inadvertance :
 
 | # | Blocage | Gravité | Levée |
 |---|---|---|---|
-| B1 | **Mentions légales incomplètes** — RCS, capital, TVA, hébergeur | 🔴 Élevée | Questions B1 et B2 — bloquant avant production |
+| B1 | **Mentions légales partiellement complétées** — restent le n° de TVA, le directeur de la publication, les n° OEC/CNCC, l'attestation RCP en cours de validité et l'hébergeur | 🟠 Moyenne | Éléments manquants — bloquant avant production |
 | B2 | **Envoi d'e-mails non configuré** — le formulaire ne peut pas aboutir | 🔴 Élevée | Clé du service d'envoi + adresse destinataire (question E3) |
 | B3 | **`www.ofixis.fr` inaccessible** — matrice de redirections incomplète | 🟠 Moyenne | Question A1 : Search Console, sitemap ou ouverture réseau |
 | B4 | Périmètre réel des missions non confirmé | 🟠 Moyenne | Question G1 — 8 pages au statut brouillon |
@@ -106,9 +106,11 @@ affichée par inadvertance :
 
 **Côté cabinet**
 1. Relire les 8 pages de mission et confirmer le périmètre de chacune.
-2. Fournir les mentions légales exactes (RCS, capital, TVA).
+2. Compléter les mentions légales : n° de TVA, directeur de la publication,
+   n° d'inscription à l'Ordre et à la CNCC, **attestation RCP en cours de validité**.
 3. Indiquer l'adresse e-mail destinataire des demandes.
 4. Indiquer l'URL de l'espace client et, si elle existe, la page Bookings.
+5. Valider l'hébergeur (Vercel proposé) pour que la mention correspondante soit renseignée.
 
 **Côté équipe projet, à réception**
 1. Renseigner et valider les données dans la configuration.
@@ -131,3 +133,6 @@ affichée par inadvertance :
 | 2026-09-10 | Direction visuelle définie ; contraste « ardoise 500 » corrigé après calcul |
 | 2026-09-10 | 14 pages livrées, formulaire opérationnel, SEO technique en place |
 | 2026-09-10 | 41 tests automatisés au vert ; barrière de mise en production opérationnelle |
+| 2026-09-10 | **Identité légale confirmée par le dirigeant** : SARL au capital de 1 000 €, RCS Nanterre 841 080 971, siège 90 rue Chaptal à Levallois-Perret, contact@ofixis.fr. L'incohérence « RCS Bobigny » de l'ancien site est levée |
+| 2026-09-10 | Appel de prime RCP 2020 reçu (Verspieren / MMA IARD, police 118269730) — **non publiable** : pièce vieille de six ans, attestation en cours de validité requise |
+| 2026-09-10 | Éléments en attente de validation ramenés de 18 à 13 |

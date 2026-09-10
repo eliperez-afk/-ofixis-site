@@ -13,13 +13,15 @@ export const metadata: Metadata = metadonnees({
 });
 
 /**
- * ⚠ Cette page contient des données restant à confirmer par le cabinet.
+ * Identité de l'éditeur validée par le dirigeant le 10 septembre 2026 :
+ * SARL au capital de 1 000 €, RCS Nanterre 841 080 971, siège 90 rue Chaptal
+ * à Levallois-Perret.
  *
- * L'ancien site indiquait un siège à Noisy-le-Sec et un RCS Bobigny, alors que
- * les registres publics rattachent OFIXIS à Levallois-Perret. Le siège étant
- * confirmé à Levallois-Perret, la ville du RCS doit être reconfirmée.
- * Des mentions légales inexactes contreviennent à l'article 6-III de la LCEN :
- * la mise en production est bloquée tant qu'elles ne sont pas validées.
+ * Restent à confirmer : n° de TVA intracommunautaire, directeur de la
+ * publication, numéros d'inscription à l'Ordre et à la CNCC, assurance de
+ * responsabilité civile professionnelle en cours de validité, et hébergeur.
+ * Ces éléments s'affichent explicitement comme « à confirmer » et bloquent la
+ * mise en production (art. 6-III de la LCEN).
  */
 export default function PageMentionsLegales() {
   const legal = CABINET.legal;
@@ -38,33 +40,25 @@ export default function PageMentionsLegales() {
         <div className="prose-ofixis mt-10">
           <h2>Éditeur du site</h2>
           <p>
-            Le site {process.env.NEXT_PUBLIC_URL_SITE ?? "www.ofixis.fr"} est
-            édité par :
+            Le site www.ofixis.fr est édité par{" "}
+            <Valeur donnee={legal.raisonSociale} />, société à responsabilité
+            limitée au capital social de <Valeur donnee={legal.capital} />,
+            immatriculée au registre du commerce et des sociétés de{" "}
+            <Valeur donnee={legal.villeRcs} /> sous le numéro{" "}
+            <Valeur donnee={legal.siren} />, dont le siège social est situé{" "}
+            {adresseUneLigne()}.
           </p>
+
+          <h3>Coordonnées</h3>
           <ul>
+            <li>Adresse postale : {CABINET.nom}, {adresseUneLigne()}</li>
+            <li>Téléphone : {CABINET.telephone.valeur.affichage}</li>
             <li>
-              Dénomination sociale : <Valeur donnee={legal.raisonSociale} />
-            </li>
-            <li>
-              Forme juridique : <Valeur donnee={legal.formeJuridique} />
-            </li>
-            <li>
-              Capital social : <Valeur donnee={legal.capital} />
-            </li>
-            <li>Siège social : {adresseUneLigne()}</li>
-            <li>
-              SIREN : <Valeur donnee={legal.siren} />
-            </li>
-            <li>
-              RCS : <Valeur donnee={legal.villeRcs} />
+              Adresse électronique : <Valeur donnee={CABINET.email} />
             </li>
             <li>
               Numéro de TVA intracommunautaire :{" "}
               <Valeur donnee={legal.tvaIntracommunautaire} />
-            </li>
-            <li>Téléphone : {CABINET.telephone.valeur.affichage}</li>
-            <li>
-              Adresse électronique : <Valeur donnee={CABINET.email} />
             </li>
           </ul>
 
@@ -88,15 +82,32 @@ export default function PageMentionsLegales() {
           </p>
 
           <h2>Assurance responsabilité civile professionnelle</h2>
-          <p>
-            Le cabinet est couvert par une assurance de responsabilité civile
-            professionnelle. Les coordonnées de l&apos;assureur et le numéro de
-            police restent{" "}
-            <mark className="rounded-sm bg-laiton-pale px-1.5 py-0.5 text-ardoise-700">
-              à confirmer
-            </mark>
-            .
-          </p>
+          {legal.assuranceRcp.statut === "confirme" && legal.assuranceRcp.valeur ? (
+            <>
+              <p>
+                Le cabinet est couvert par une assurance de responsabilité civile
+                professionnelle souscrite auprès de{" "}
+                {legal.assuranceRcp.valeur.assureur}, par l&apos;intermédiaire de{" "}
+                {legal.assuranceRcp.valeur.courtier}, sous le numéro de police{" "}
+                {legal.assuranceRcp.valeur.numeroPolice}.
+              </p>
+              <p>
+                Couverture géographique :{" "}
+                {legal.assuranceRcp.valeur.couvertureGeographique}.
+              </p>
+            </>
+          ) : (
+            <p>
+              Le cabinet est couvert par une assurance de responsabilité civile
+              professionnelle, obligatoire pour tout professionnel inscrit. Les
+              coordonnées de l&apos;assureur, le numéro de police et la
+              couverture géographique restent{" "}
+              <mark className="rounded-sm bg-laiton-pale px-1.5 py-0.5 text-ardoise-700">
+                à confirmer sur attestation en cours de validité
+              </mark>
+              .
+            </p>
+          )}
 
           <h2>Hébergement</h2>
           {legal.hebergeur.valeur ? (
