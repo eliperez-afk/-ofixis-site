@@ -17,6 +17,16 @@ import { envoyerEmails } from "@/lib/emails";
 
 export const runtime = "nodejs";
 
+/**
+ * Traitement en région Paris.
+ *
+ * Les demandes transitent par cette fonction. La fixer sur `cdg1` maintient le
+ * traitement des données du formulaire à l'intérieur de l'Union européenne,
+ * alors que l'hébergeur est une société américaine. C'est ce que la politique
+ * de confidentialité annonce.
+ */
+export const preferredRegion = "cdg1";
+
 const DELAI_MINIMUM_MS = 3000;
 
 export async function POST(requete: Request): Promise<NextResponse> {

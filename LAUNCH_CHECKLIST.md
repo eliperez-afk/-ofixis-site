@@ -13,7 +13,7 @@ sont pas validées.
 
 - [x] Siège social confirmé : 90 rue Chaptal, 92300 Levallois-Perret
 - [x] Ville du RCS (Nanterre), capital (1 000 €), forme juridique et SIREN confirmés
-- [ ] **N° de TVA intracommunautaire** et **directeur de la publication** confirmés
+- [x] N° de TVA (clé vérifiée), directeur de la publication, n° OEC et CNCC, hébergeur confirmés
 - [x] Bureau « Paris Sud » retiré du site — la question CEGECO est sans objet
 - [x] Adresse unique arbitrée ; anciennes adresses retirées et verrouillées par test
 - [x] Numéro unique (06 50 28 12 86) répliqué partout et verrouillé par test
@@ -133,8 +133,7 @@ sont pas validées.
 
 ## Reste à faire avant toute mise en ligne — synthèse
 
-1. **Mentions légales** : n° de TVA, directeur de la publication, n° OEC et CNCC,
-   **attestation RCP en cours de validité**, hébergeur
+1. **Attestation RCP de l'exercice en cours** — seul point encore manquant des mentions légales
 2. **Adresse e-mail destinataire** des demandes et configuration du service d'envoi
 3. **URL de l'espace client**
 4. **Page Microsoft Bookings**, si la prise de rendez-vous en ligne est souhaitée

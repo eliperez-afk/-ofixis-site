@@ -95,6 +95,22 @@ export default function PagePolitiqueConfidentialite() {
             d&apos;autres fins.
           </p>
 
+          <h2>Hébergement et localisation des données</h2>
+          <p>
+            Le site est hébergé par {CABINET.legal.hebergeur.valeur?.nom},
+            société de droit américain. Le traitement des demandes envoyées par
+            le formulaire est en revanche exécuté dans la{" "}
+            <strong>région de Paris</strong> : les données que vous saisissez
+            n&apos;ont pas à quitter l&apos;Union européenne pour être
+            acheminées vers le cabinet.
+          </p>
+          <p>
+            Aucune donnée du formulaire n&apos;est enregistrée dans une base de
+            données : elle est transmise par courrier électronique aux personnes
+            chargées d&apos;y répondre, puis conservée dans la messagerie du
+            cabinet selon les durées indiquées ci-dessous.
+          </p>
+
           <h2>Durée de conservation</h2>
           <p>
             Les demandes n&apos;ayant pas donné suite à une relation

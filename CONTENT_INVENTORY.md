@@ -23,11 +23,11 @@ horodatée, reportée dans la colonne « Validé par / le ».
 | L4 | SIREN | **841 080 971** | dirigeant | 2026-09-10 | **CONFIRMÉ** | Dirigeant, 2026-09-10 |
 | L5 | Ville du RCS | **Nanterre** | dirigeant | 2026-09-10 | **CONFIRMÉ** — l'incohérence « RCS Bobigny » de l'ancien site est levée | Dirigeant, 2026-09-10 |
 | L6 | Siège social | **90 rue Chaptal, 92300 Levallois-Perret** | dirigeant | 2026-09-10 | **CONFIRMÉ** | Dirigeant, 2026-09-10 |
-| L7 | Directeur de la publication | Eli Perez (ancien site) | ancien site | 2026-09-09 | À CONFIRMER — nom, prénom et fonction exacte | |
-| L8 | N° TVA intracommunautaire | — non communiqué | — | — | À CONFIRMER | |
-| L9 | Hébergeur (nom, raison sociale, adresse, téléphone) | — non arrêté | — | — | À CONFIRMER — sera renseigné par l'équipe projet si Vercel est validé | |
-| L10 | N° inscription Ordre des experts-comptables IDF | 140000548701 | ancien site | 2026-09-09 | À CONFIRMER | |
-| L11 | N° inscription CNCC | 4100090432 | ancien site | 2026-09-09 | À CONFIRMER | |
+| L7 | Directeur de la publication | **Eli Perez** | dirigeant | 2026-09-10 | **CONFIRMÉ** | Dirigeant, 2026-09-10 |
+| L8 | N° TVA intracommunautaire | **FR 64 841 080 971** | dirigeant | 2026-09-10 | **CONFIRMÉ** — clé de contrôle 64 vérifiée par calcul sur le SIREN | Dirigeant, 2026-09-10 |
+| L9 | Hébergeur | **Vercel Inc., 440 N Barranca Avenue #4133, Covina, CA 91723, États-Unis** | dirigeant (choix validé) | 2026-09-10 | **CONFIRMÉ** — réserve : Vercel ne publie pas de ligne téléphonique, le canal de support officiel est indiqué à la place | Dirigeant, 2026-09-10 |
+| L10 | N° inscription Ordre des experts-comptables IDF | **140000548701** | dirigeant | 2026-09-10 | **CONFIRMÉ** | Dirigeant, 2026-09-10 |
+| L11 | N° inscription CNCC | **4100090432** | dirigeant | 2026-09-10 | **CONFIRMÉ** | Dirigeant, 2026-09-10 |
 | L12 | Assurance RCP — courtier | Verspieren, 1 av. François Mitterrand, BP 30200, 59446 Wasquehal Cedex (ORIAS 07 001 542) | appel de prime **2020** | 2020 | **À CONFIRMER — pièce périmée** | |
 | L13 | Assurance RCP — assureur | MMA IARD / MMA IARD Assurances Mutuelles, 160 rue Henri Champion, 72030 Le Mans Cedex 9 | appel de prime **2020** | 2020 | **À CONFIRMER — pièce périmée** | |
 | L14 | Assurance RCP — n° de police | 118269730 | appel de prime **2020** | 2020 | **À CONFIRMER — pièce périmée** | |
@@ -43,6 +43,9 @@ horodatée, reportée dans la colonne « Validé par / le ».
 > **Pièce attendue : l'attestation d'assurance RC professionnelle de
 > l'exercice en cours**, qui porte l'assureur, le numéro de police, la période
 > de validité et la couverture géographique.
+> Le dirigeant a confirmé le 10 septembre 2026 qu'il la demande à son courtier
+> Verspieren. **En attente de réception** — seul élément des mentions légales
+> encore bloquant.
 
 > **L5/L6 sont bloquants avant mise en production.** Des mentions légales
 > inexactes contreviennent à l'article 6-III de la LCEN et fragilisent

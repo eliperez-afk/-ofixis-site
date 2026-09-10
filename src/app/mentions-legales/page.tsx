@@ -17,11 +17,10 @@ export const metadata: Metadata = metadonnees({
  * SARL au capital de 1 000 €, RCS Nanterre 841 080 971, siège 90 rue Chaptal
  * à Levallois-Perret.
  *
- * Restent à confirmer : n° de TVA intracommunautaire, directeur de la
- * publication, numéros d'inscription à l'Ordre et à la CNCC, assurance de
- * responsabilité civile professionnelle en cours de validité, et hébergeur.
- * Ces éléments s'affichent explicitement comme « à confirmer » et bloquent la
- * mise en production (art. 6-III de la LCEN).
+ * Reste à confirmer : l'assurance de responsabilité civile professionnelle,
+ * l'attestation transmise portant sur l'exercice 2020. Cet élément s'affiche
+ * explicitement comme « à confirmer » et bloque la mise en production
+ * (art. 6-III de la LCEN).
  */
 export default function PageMentionsLegales() {
   const legal = CABINET.legal;
@@ -110,12 +109,25 @@ export default function PageMentionsLegales() {
           )}
 
           <h2>Hébergement</h2>
-          {legal.hebergeur.valeur ? (
-            <ul>
-              <li>{legal.hebergeur.valeur.nom}</li>
-              <li>{legal.hebergeur.valeur.adresse}</li>
-              <li>{legal.hebergeur.valeur.telephone}</li>
-            </ul>
+          {legal.hebergeur.statut === "confirme" && legal.hebergeur.valeur ? (
+            <>
+              <p>Le site est hébergé par :</p>
+              <ul>
+                <li>{legal.hebergeur.valeur.nom}</li>
+                <li>{legal.hebergeur.valeur.adresse}</li>
+                <li>
+                  Assistance :{" "}
+                  <a
+                    href={legal.hebergeur.valeur.contact}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {legal.hebergeur.valeur.contact}
+                    <span className="sr-only"> (nouvelle fenêtre)</span>
+                  </a>
+                </li>
+              </ul>
+            </>
           ) : (
             <p>
               <mark className="rounded-sm bg-laiton-pale px-1.5 py-0.5 text-ardoise-700">

@@ -78,8 +78,8 @@ affichée par inadvertance :
 | Page **Équipe** | Route inexistante (404) | Consentement écrit de chaque personne |
 | **Chiffres clés** | Aucun affiché | Chiffre daté et périmétré |
 | **Logos clients** | Aucun | Décision : ne pas en publier |
-| **Numéros OEC et CNCC** | Masqués en pied de page | Confirmation par le cabinet |
-| **Mentions légales** | Affichées avec la mention « à confirmer » | Siège, RCS, capital, TVA, hébergeur |
+| **Numéros OEC et CNCC** | ✅ Publiés (mentions légales et pied de page) | — |
+| **Mentions légales** | ✅ Complètes, sauf l'assurance RCP | Attestation de l'exercice en cours |
 | **Horaires d'ouverture** | Non affichés | Communication par le cabinet |
 | **Espace client** | Bouton absent partout | URL réelle du portail |
 | **Prise de rendez-vous en ligne** | Renvoi vers téléphone et formulaire | URL de la page Bookings |
@@ -90,7 +90,7 @@ affichée par inadvertance :
 
 | # | Blocage | Gravité | Levée |
 |---|---|---|---|
-| B1 | **Mentions légales partiellement complétées** — restent le n° de TVA, le directeur de la publication, les n° OEC/CNCC, l'attestation RCP en cours de validité et l'hébergeur | 🟠 Moyenne | Éléments manquants — bloquant avant production |
+| B1 | **Mentions légales complètes sauf l'assurance RCP** — attestation de l'exercice en cours demandée au courtier, en attente de réception | 🟠 Moyenne | Réception de l'attestation — dernier point bloquant des mentions légales |
 | B2 | **Envoi d'e-mails non configuré** — le formulaire ne peut pas aboutir | 🔴 Élevée | Clé du service d'envoi + adresse destinataire (question E3) |
 | B3 | **`www.ofixis.fr` inaccessible** — matrice de redirections incomplète | 🟠 Moyenne | Question A1 : Search Console, sitemap ou ouverture réseau |
 | B4 | Périmètre réel des missions non confirmé | 🟠 Moyenne | Question G1 — 8 pages au statut brouillon |
@@ -106,11 +106,11 @@ affichée par inadvertance :
 
 **Côté cabinet**
 1. Relire les 8 pages de mission et confirmer le périmètre de chacune.
-2. Compléter les mentions légales : n° de TVA, directeur de la publication,
-   n° d'inscription à l'Ordre et à la CNCC, **attestation RCP en cours de validité**.
+2. Transmettre l'**attestation RCP de l'exercice en cours** (demandée à Verspieren).
 3. Indiquer l'adresse e-mail destinataire des demandes.
 4. Indiquer l'URL de l'espace client et, si elle existe, la page Bookings.
-5. Valider l'hébergeur (Vercel proposé) pour que la mention correspondante soit renseignée.
+5. Confirmer l'adresse d'exercice des droits RGPD et la durée de conservation
+   des demandes (3 ans proposés par défaut).
 
 **Côté équipe projet, à réception**
 1. Renseigner et valider les données dans la configuration.
@@ -136,3 +136,6 @@ affichée par inadvertance :
 | 2026-09-10 | **Identité légale confirmée par le dirigeant** : SARL au capital de 1 000 €, RCS Nanterre 841 080 971, siège 90 rue Chaptal à Levallois-Perret, contact@ofixis.fr. L'incohérence « RCS Bobigny » de l'ancien site est levée |
 | 2026-09-10 | Appel de prime RCP 2020 reçu (Verspieren / MMA IARD, police 118269730) — **non publiable** : pièce vieille de six ans, attestation en cours de validité requise |
 | 2026-09-10 | Éléments en attente de validation ramenés de 18 à 13 |
+| 2026-09-10 | **Mentions légales complétées** : TVA FR 64 841 080 971 (clé vérifiée), directeur de la publication, n° OEC 140000548701 et CNCC 4100090432, hébergeur Vercel validé |
+| 2026-09-10 | Traitement du formulaire fixé en région Paris (`cdg1`) : les données saisies ne quittent pas l'Union européenne |
+| 2026-09-10 | Éléments en attente ramenés de 13 à 8 — seule l'assurance RCP bloque encore les mentions légales |

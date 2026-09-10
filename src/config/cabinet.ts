@@ -37,6 +37,8 @@ const aConfirmer = <T,>(valeur: T, source: string): Donnee<T> => ({
 /** Validations écrites du dirigeant. */
 const VALIDATION_DIRIGEANT = "Validé par le dirigeant le 2026-09-09";
 const VALIDATION_MENTIONS = "Mentions légales transmises par le dirigeant le 2026-09-10";
+const VALIDATION_COMPLEMENTS =
+  "Compléments confirmés par le dirigeant le 2026-09-10";
 
 export const CABINET = {
   nom: "OFIXIS",
@@ -98,15 +100,36 @@ export const CABINET = {
      * relève bien du RCS de Nanterre.
      */
     villeRcs: confirme("Nanterre", VALIDATION_MENTIONS),
-    tvaIntracommunautaire: aConfirmer("", "Non communiqué"),
-    directeurPublication: aConfirmer("Eli Perez", "Ancien site — à reconfirmer"),
-    numeroOrdre: aConfirmer("140000548701", "Ancien site — à reconfirmer"),
-    numeroCncc: aConfirmer("4100090432", "Ancien site — à reconfirmer"),
-    hebergeur: aConfirmer<null | {
+    /**
+     * Clé de contrôle vérifiée : (12 + 3 × (841080971 mod 97)) mod 97 = 64.
+     * Le numéro fourni est donc arithmétiquement cohérent avec le SIREN.
+     */
+    tvaIntracommunautaire: confirme("FR 64 841 080 971", VALIDATION_COMPLEMENTS),
+    directeurPublication: confirme("Eli Perez", VALIDATION_COMPLEMENTS),
+    numeroOrdre: confirme("140000548701", VALIDATION_COMPLEMENTS),
+    numeroCncc: confirme("4100090432", VALIDATION_COMPLEMENTS),
+    /**
+     * Hébergeur validé par le dirigeant le 10 septembre 2026.
+     *
+     * Vercel ne publie pas de numéro de téléphone d'assistance : le champ
+     * `contact` renvoie donc vers le canal de support officiel. L'article 6-III
+     * de la LCEN mentionne un numéro de téléphone ; à défaut, l'indication du
+     * moyen de contact réellement disponible est la formulation la plus exacte
+     * possible. Un hébergeur français publiant une ligne téléphonique lèverait
+     * cette réserve — voir CADRAGE_TECHNIQUE.md.
+     */
+    hebergeur: confirme<null | {
       nom: string;
       adresse: string;
-      telephone: string;
-    }>(null, "Hébergement non arrêté"),
+      contact: string;
+    }>(
+      {
+        nom: "Vercel Inc.",
+        adresse: "440 N Barranca Avenue #4133, Covina, CA 91723, États-Unis",
+        contact: "https://vercel.com/help",
+      },
+      VALIDATION_COMPLEMENTS,
+    ),
 
     /**
      * Assurance de responsabilité civile professionnelle.
@@ -132,7 +155,7 @@ export const CABINET = {
         numeroPolice: "118269730",
         couvertureGeographique: "",
       },
-      "Appel de prime 2020 — attestation en cours de validité requise",
+      "Appel de prime 2020 — attestation en cours de validité annoncée par le dirigeant le 2026-09-10, en attente de réception",
     ),
   },
 
