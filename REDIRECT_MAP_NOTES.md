@@ -1,11 +1,21 @@
 # Matrice de redirections — notes de méthode
 
-**Statut : PARTIELLE ET NON EXPLOITABLE EN L'ÉTAT.**
+**Statut : IMPLÉMENTÉE MAIS INCOMPLÈTE.**
+
+Les redirections listées dans `REDIRECT_MAP.csv` sont en place dans le code
+(`src/config/redirections.ts`) et vérifiées par les tests automatisés.
 
 `REDIRECT_MAP.csv` ne contient aujourd'hui que les URLs que l'index des moteurs
 de recherche a permis d'identifier. Le site n'ayant pas pu être exploré
 (cf. `AUDIT_PHASE0.md` § 1 — blocage réseau sortant), **cette matrice est
 certainement très incomplète**.
+
+## Pourquoi des codes 308 et non 301
+
+Next.js émet un **308 Permanent Redirect** là où l'ancien usage employait un 301.
+Les deux codes signifient « déplacé définitivement » et sont traités de façon
+identique par les moteurs de recherche pour la transmission du référencement.
+Le 308 a l'avantage de préserver la méthode HTTP. Aucune action n'est requise.
 
 ## Ce qu'il faut pour la compléter
 

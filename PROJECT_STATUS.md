@@ -1,8 +1,8 @@
 # OFIXIS — Statut du projet
 
-**Dernière mise à jour :** 9 septembre 2026
-**Phase en cours :** Phase 0 — découverte, audit et questions — **terminée**
-**Prochaine étape :** **point de validation 1** — en attente des réponses du cabinet
+**Dernière mise à jour :** 10 septembre 2026
+**Phase en cours :** développement du site — **socle livré et fonctionnel**
+**Prochaine étape :** validation des contenus par le cabinet, puis préproduction hébergée
 
 ---
 
@@ -11,82 +11,110 @@
 | Phase | Objet | Statut |
 |---|---|---|
 | 0 | Découverte, audit, questions | ✅ Terminée |
-| — | **Point de validation 1** | ⏸ **En attente du cabinet** |
-| 1 | Stratégie, arborescence, contenu | ⛔ Non démarrée |
-| — | Point de validation 2 | — |
-| 2 | Direction visuelle et expérience | ⛔ Non démarrée |
-| 3 | Socle technique | ⛔ Non démarrée |
-| 4 | Conversions et intégrations | ⛔ Non démarrée |
-| 5 | SEO technique, local et éditorial | 🟡 Plan provisoire rédigé |
-| 6 | Conformité, sécurité, qualité | ⛔ Non démarrée |
-| 7 | Migration, préproduction, lancement | ⛔ Non démarrée |
-
-**Aucune ligne de code n'a été écrite**, conformément à la consigne : l'audit et
-les questions bloquantes précèdent le développement.
+| 1 | Stratégie, arborescence, contenu | ✅ Arborescence livrée · textes au statut brouillon |
+| 2 | Direction visuelle et expérience | ✅ Livrée — à valider par le cabinet |
+| 3 | Socle technique | ✅ Livré |
+| 4 | Conversions et intégrations | 🟡 Formulaire et téléphone opérationnels · Bookings et espace client en attente d'URL |
+| 5 | SEO technique, local et éditorial | ✅ Technique livré · 🟡 éditorial en attente de validation |
+| 6 | Conformité, sécurité, qualité | 🟡 Livré · CSP et validation juridique en attente |
+| 7 | Migration, préproduction, lancement | ⛔ Non démarrée — bloquée par les validations |
 
 ---
 
-## Documents produits
+## Ce qui fonctionne aujourd'hui
 
-| Fichier | Contenu |
-|---|---|
-| `AUDIT_PHASE0.md` | Audit de l'existant, incohérences, risques, opportunités |
-| `CONTENT_INVENTORY.md` | Chaque donnée, sa source, sa date, son statut |
-| `QUESTIONS_CADRAGE.md` | Questions de cadrage, hiérarchisées par criticité |
-| `CADRAGE_TECHNIQUE.md` | Socle technique, comparaison des CMS, arborescence proposée |
-| `SEO_PLAN.md` | Plan SEO provisoire, calendrier éditorial 3 mois |
-| `REDIRECT_MAP.csv` | Matrice de redirections — **partielle** |
-| `REDIRECT_MAP_NOTES.md` | Méthode de complétion de la matrice |
-| `LAUNCH_CHECKLIST.md` | Check-list de lancement et actions manuelles du cabinet |
+Site complet de **14 pages**, 25 routes générées, compilé et testé :
 
----
+- accueil, cabinet, missions (vue d'ensemble + **8 pages de mission**),
+  actualités, contact, prise de rendez-vous, mentions légales, politique de
+  confidentialité, accessibilité, page 404 ;
+- **formulaire de contact opérationnel** : validation serveur, protection
+  anti-robots sans captcha ni traceur, notification interne et accusé de
+  réception, message d'erreur explicite si l'envoi échoue ;
+- **barre d'actions mobile** : Appeler · Rendez-vous · Message ;
+- **rubrique Actualités** avec filtres, sommaire automatique, sources, flux RSS
+  et guide de publication non technique ;
+- **SEO technique** : titres et descriptions uniques, canoniques, sitemap et
+  robots dynamiques, JSON-LD, fil d'Ariane, redirections depuis l'ancien site ;
+- **41 tests automatisés** au vert sur profils ordinateur et mobile ;
+- **aucun cookie, aucun script tiers, aucune police distante** — donc aucun
+  bandeau de consentement nécessaire.
 
-## Décisions prises (réversibles, prises en autonomie)
+## Décisions du dirigeant, 9 septembre 2026
+
+| # | Décision | Mise en œuvre |
+|---|---|---|
+| D1 | **Un seul bureau** : 90 rue Chaptal, 92300 Levallois-Perret | Seule adresse du site. Paris 16e, Noisy-le-Sec, Provins et Saint-Mandé retirés |
+| D2 | **Un seul numéro** : 06 50 28 12 86 (mobile, provisoire) | Numéro unique partout. Une ligne fixe le remplacera |
+| D3 | **Suppression des logos clients** | Aucun nom ni logo de client sur le site |
+| D4 | Les informations de l'ancien site sont erronées | Aucun contenu repris sans réécriture ; chiffres clés retirés |
+
+Ces quatre décisions sont **verrouillées par des tests automatisés** : toute
+réapparition d'une ancienne adresse, de l'ancien numéro ou d'un nom de client
+fait échouer la suite de tests.
+
+## Décisions techniques prises en autonomie
 
 | # | Décision | Motif |
 |---|---|---|
-| 1 | Next.js (App Router) + TypeScript strict + Tailwind CSS | Dépôt vide, aucune contrainte héritée ; rendu serveur natif indispensable au SEO |
-| 2 | Versions verrouillées au lockfile au moment de l'installation | Ne pas figer une version qui serait obsolète le jour du développement |
-| 3 | Source unique de vérité pour les informations du cabinet | Réponse directe au problème d'incohérence relevé dans l'audit |
-| 4 | Pas de captcha tiers en V1 (honeypot + limitation de débit) | Suffisant à ce volume, sans dépendance externe ni traceur |
-| 5 | Recommandation : mesure d'audience sans cookie | Évite le bandeau de consentement, mesure complète, page plus légère |
-| 6 | Page `/cookies` créée seulement si un traceur la rend nécessaire | Une page « cookies » sans cookie est un contresens |
-| 7 | `/secteurs/professions-de-sante` proposé en priorité | C'est l'axe sur lequel les moteurs identifient aujourd'hui le site |
-| 8 | Recommandation CMS : Payload, alternative Sanity | Données en UE, pas de coût par utilisateur — arbitrage laissé au cabinet |
-| 9 | Aucun contenu public rédigé à ce stade | Toutes les données factuelles sont non validées |
+| 1 | Next.js 16 (App Router), React 19, TypeScript strict, Tailwind 4 | Dépôt vide, aucune contrainte héritée ; rendu serveur natif indispensable au SEO |
+| 2 | TypeScript 6 plutôt que 7 | L'analyse statique ne supporte pas encore TS 7 ; TS 6 est la dernière version pleinement outillée |
+| 3 | **Articles en fichiers Markdown versionnés, pas de CMS en V1** | Livre un site complet sans attendre l'arbitrage CMS ni engager d'abonnement. Les champs correspondent au futur schéma : la bascule ne réécrira ni les articles ni les pages |
+| 4 | Source unique de vérité (`src/config/cabinet.ts`) | Réponse directe aux incohérences de l'ancien site |
+| 5 | Barrière `npm run check:contenu -- --prod` | Refuse mécaniquement le déploiement tant qu'une donnée n'est pas validée |
+| 6 | Bookings en lien plutôt qu'en iframe | L'iframe dépose des cookies tiers, alourdit la page et n'est pas corrigeable côté accessibilité. Révisable après essai réel |
+| 7 | Aucun captcha tiers | Champ leurre + délai minimal + limitation de débit suffisent à ce volume, sans traceur |
+| 8 | Aucune police distante | Zéro requête réseau, aucun décalage au chargement, aucun cookie |
+| 9 | Pas de balisage `FAQPage` | Google réserve ce résultat enrichi aux sites gouvernementaux et de santé depuis 2023 |
+| 10 | Ardoise 500 assombrie en `#546a77` | Le calcul de contraste donnait 4,28:1 sur fond ombré, sous le seuil AA |
 
----
+## Ce qui n'est pas publié, et pourquoi
+
+Le site est construit pour qu'une donnée non validée **ne puisse pas** être
+affichée par inadvertance :
+
+| Élément | État | Condition de publication |
+|---|---|---|
+| Page **Équipe** | Route inexistante (404) | Consentement écrit de chaque personne |
+| **Chiffres clés** | Aucun affiché | Chiffre daté et périmétré |
+| **Logos clients** | Aucun | Décision : ne pas en publier |
+| **Numéros OEC et CNCC** | Masqués en pied de page | Confirmation par le cabinet |
+| **Mentions légales** | Affichées avec la mention « à confirmer » | Siège, RCS, capital, TVA, hébergeur |
+| **Horaires d'ouverture** | Non affichés | Communication par le cabinet |
+| **Espace client** | Bouton absent partout | URL réelle du portail |
+| **Prise de rendez-vous en ligne** | Renvoi vers téléphone et formulaire | URL de la page Bookings |
+| **Articles** | Rubrique vide, message assumé | Rédaction, relecture, passage au statut publié |
+| **Textes des missions** | Publiés, marqués « brouillon » en recette | Validation du périmètre par le cabinet |
 
 ## Blocages
 
 | # | Blocage | Gravité | Levée |
 |---|---|---|---|
-| B1 | **`www.ofixis.fr` inaccessible depuis l'environnement** (proxy réseau) — audit technique et matrice de redirections incomplets | 🔴 Élevée | Question A1 : accès Search Console, sitemap, back-office, ou ouverture réseau |
-| B2 | **Mentions légales probablement périmées** (siège Noisy-le-Sec / RCS Bobigny vs Levallois-Perret dans les registres) | 🔴 Élevée | Question B1 |
-| B3 | **Relation OFIXIS ↔ CEGECO non qualifiée** — entités juridiques distinctes | 🔴 Élevée | Questions C1, C2 |
-| B4 | **Six adresses en circulation**, trois affichées, aucune consolidée | 🔴 Élevée | Question D1 |
-| B5 | **Trois numéros de téléphone** en circulation | 🔴 Élevée | Question E1 |
-| B6 | **Références clients sans autorisation vérifiée** (secret professionnel) | 🔴 Élevée | Question I2 |
-| B7 | Missions réellement proposées non confirmées | 🟠 Moyenne | Questions G1 à G4 |
-| B8 | Équipe et consentements de publication inconnus | 🟠 Moyenne | Question J3 |
-| B9 | Existence et configuration de Microsoft Bookings inconnues | 🟠 Moyenne | Questions F1 à F3 |
-| B10 | URL de l'espace client inconnue | 🟠 Moyenne | Question E5 |
-| B11 | Chiffres clés non datés ni périmétrés | 🟠 Moyenne | Question I1 |
-| B12 | Ressources graphiques (logo vectoriel, charte, photos) inconnues | 🟡 Faible | Questions K1 à K3 |
-
----
+| B1 | **Mentions légales incomplètes** — RCS, capital, TVA, hébergeur | 🔴 Élevée | Questions B1 et B2 — bloquant avant production |
+| B2 | **Envoi d'e-mails non configuré** — le formulaire ne peut pas aboutir | 🔴 Élevée | Clé du service d'envoi + adresse destinataire (question E3) |
+| B3 | **`www.ofixis.fr` inaccessible** — matrice de redirections incomplète | 🟠 Moyenne | Question A1 : Search Console, sitemap ou ouverture réseau |
+| B4 | Périmètre réel des missions non confirmé | 🟠 Moyenne | Question G1 — 8 pages au statut brouillon |
+| B5 | URL de l'espace client inconnue | 🟠 Moyenne | Question E5 |
+| B6 | Page Bookings inexistante | 🟠 Moyenne | Questions F1 à F3 |
+| B7 | Équipe et consentements | 🟠 Moyenne | Question J3 |
+| B8 | Politique de confidentialité non validée juridiquement | 🟠 Moyenne | Relecture juridique |
+| B9 | CSP non finalisée | 🟡 Faible | Dépend des services tiers retenus |
+| B10 | Logo vectoriel et photographies | 🟡 Faible | Questions K1 à K3 |
+| B11 | Annuaires tiers diffusant les anciennes adresses | 🟡 Faible | À faire corriger par le cabinet |
 
 ## Prochaine action
 
-**Côté cabinet :** répondre à `QUESTIONS_CADRAGE.md`. Si le temps manque,
-six réponses débloquent l'essentiel : **A1** (accès aux URLs), **B1** (siège et
-RCS), **C1** (lien avec CEGECO), **D1** (adresses réelles), **E1** (téléphone),
-**G1** (missions réelles).
+**Côté cabinet**
+1. Relire les 8 pages de mission et confirmer le périmètre de chacune.
+2. Fournir les mentions légales exactes (RCS, capital, TVA).
+3. Indiquer l'adresse e-mail destinataire des demandes.
+4. Indiquer l'URL de l'espace client et, si elle existe, la page Bookings.
 
-**Côté équipe projet, à réception :** consolider `CONTENT_INVENTORY.md`,
-compléter `REDIRECT_MAP.csv`, arrêter l'arborescence définitive, puis engager la
-Phase 1 (plan de site, maquettes basse fidélité, direction visuelle, deux pages
-de contenu représentatives) jusqu'au point de validation 2.
+**Côté équipe projet, à réception**
+1. Renseigner et valider les données dans la configuration.
+2. Configurer le service d'envoi et tester le formulaire de bout en bout.
+3. Déployer une préproduction protégée et mesurer les performances réelles.
+4. Compléter la matrice de redirections à partir de la Search Console.
 
 ---
 
@@ -94,11 +122,12 @@ de contenu représentatives) jusqu'au point de validation 2.
 
 | Date | Événement |
 |---|---|
-| 2026-09-09 | Dépôt inspecté : vide, aucun commit, aucune contrainte technique héritée |
-| 2026-09-09 | Accès direct à `www.ofixis.fr` refusé par le proxy réseau — audit réorienté vers les sources indirectes |
-| 2026-09-09 | Audit indirect réalisé (index moteurs, registres publics, annuaire de l'Ordre, annuaires tiers) |
-| 2026-09-09 | Incohérence siège social / RCS détectée entre les mentions légales et les registres publics |
-| 2026-09-09 | CEGECO identifiée comme personne morale distincte (SAS, SIREN 313 700 353, 1978) |
-| 2026-09-09 | Six adresses et trois numéros de téléphone en circulation — NAP rompu |
-| 2026-09-09 | Références clients citées par des annuaires tiers classées « interdit de publication » |
-| 2026-09-09 | Livrables de Phase 0 rédigés ; projet en attente du point de validation 1 |
+| 2026-09-09 | Dépôt inspecté : vide, aucune contrainte technique héritée |
+| 2026-09-09 | Accès direct à `www.ofixis.fr` refusé — audit réorienté vers les sources indirectes |
+| 2026-09-09 | Incohérence siège / RCS détectée ; CEGECO identifiée comme entité distincte |
+| 2026-09-09 | Livrables de Phase 0 rédigés |
+| 2026-09-09 | **Décisions du dirigeant** : bureau unique à Levallois-Perret, numéro unique, suppression des logos clients |
+| 2026-09-10 | Socle technique installé : Next.js 16, React 19, TypeScript 6 strict, Tailwind 4 |
+| 2026-09-10 | Direction visuelle définie ; contraste « ardoise 500 » corrigé après calcul |
+| 2026-09-10 | 14 pages livrées, formulaire opérationnel, SEO technique en place |
+| 2026-09-10 | 41 tests automatisés au vert ; barrière de mise en production opérationnelle |

@@ -1,7 +1,7 @@
 # OFIXIS — Cadrage technique et architecture proposée
 
 **Date :** 9 septembre 2026
-**Statut :** proposition soumise au **point de validation 1** — rien n'est développé à ce stade.
+**Statut :** mis en œuvre. Ce document décrit les choix effectivement retenus au 10 septembre 2026.
 
 ---
 
@@ -15,7 +15,7 @@ l'installation, jamais figées à l'avance dans un document) :
 |---|---|---|---|
 | Framework | **Next.js** (App Router) | 16.3.4 | Rendu serveur et génération statique natifs — indispensables pour le SEO ; écosystème mature ; hébergement simple |
 | UI | **React** | 19.3.0 | Imposé par Next.js |
-| Langage | **TypeScript strict** | 7.0.2 | Détecte à la compilation les erreurs qui, sinon, se voient en production |
+| Langage | **TypeScript strict** | 6.0.3 | Détecte à la compilation les erreurs qui, sinon, se voient en production. TypeScript 7 écarté : l'analyse statique ne le supporte pas encore |
 | Styles | **Tailwind CSS** avec tokens de design | 4.3.3 | Cohérence visuelle imposée par construction ; CSS final réduit au strict nécessaire |
 | Hébergement | **Vercel** (à valider) | — | Intégration native Next.js, préproduction protégée automatique, retour arrière en un clic |
 | E-mails transactionnels | **Resend** ou SMTP du cabinet | — | Notification interne + accusé de réception |
@@ -88,7 +88,23 @@ techniquement.
 
 **Notre recommandation : Payload**, pour la maîtrise des données et l'absence de
 coût par utilisateur. **Si la priorité est de ne rien avoir à maintenir : Sanity.**
-Décision attendue au point de validation 1 (question L1).
+
+### Décision pour la V1 : aucun CMS, des fichiers Markdown
+
+En l'absence d'arbitrage sur ce point (question L1) et pour ne pas retarder la
+livraison, la V1 stocke les articles en **fichiers Markdown versionnés dans
+Git**. Ce choix est délibérément réversible :
+
+- coût nul, aucune infrastructure, aucune surface d'attaque supplémentaire ;
+- l'historique de chaque modification est conservé ;
+- **les champs correspondent exactement au schéma prévu pour le CMS**
+  (titre, chapô, auteur, relecteur, dates, catégorie, sources, statut) ;
+- la bascule vers Payload ou Sanity consistera à remplacer le seul fichier
+  `src/lib/actualites.ts` — sans réécrire les articles ni modifier les pages.
+
+`GUIDE_PUBLICATION.md` explique la rédaction et la publication sans
+prérequis technique. Le passage à un CMS se justifiera si le rythme de
+publication augmente ou si plusieurs rédacteurs doivent intervenir.
 
 ---
 

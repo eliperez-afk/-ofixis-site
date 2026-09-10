@@ -1,6 +1,6 @@
 # OFIXIS — Inventaire des contenus et des données
 
-**Mise à jour :** 9 septembre 2026
+**Mise à jour :** 10 septembre 2026
 **Règle :** aucune ligne au statut `À CONFIRMER` ou `INTERDIT` ne peut être publiée.
 Le passage au statut `CONFIRMÉ` exige une validation écrite du dirigeant,
 horodatée, reportée dans la colonne « Validé par / le ».
@@ -39,9 +39,9 @@ horodatée, reportée dans la colonne « Validé par / le ».
 
 | # | Information | Valeur relevée | Source | Date | Statut |
 |---|---|---|---|---|---|
-| C1 | Téléphone principal | 01 89 41 04 76 | site actuel | 2026-09-09 | À CONFIRMER |
-| C2 | Téléphone alternatif | 01 85 05 26 94 | annuaires tiers | 2026-09-09 | **CONTRADICTOIRE** |
-| C3 | Mobile | 06 50 28 12 86 | annuaires tiers | 2026-09-09 | **CONTRADICTOIRE** |
+| C1 | **Téléphone unique du cabinet** | **06 50 28 12 86** | **Dirigeant, 2026-09-09** | 2026-09-09 | **CONFIRMÉ** — ligne mobile à titre provisoire, une ligne fixe est en cours de création |
+| C2 | ~~01 89 41 04 76~~ | retiré | Dirigeant : donnée erronée | 2026-09-09 | **RETIRÉ DU SITE** |
+| C3 | ~~01 85 05 26 94~~ | retiré | Annuaires tiers — à faire corriger | 2026-09-09 | **RETIRÉ DU SITE** |
 | C4 | E-mail public | contact@ofixis.fr | site actuel | 2026-09-09 | À CONFIRMER |
 | C5 | Destinataires internes des formulaires | — non collecté | — | — | À CONFIRMER |
 | C6 | Délai de rappel réellement tenable | — non collecté | — | — | À CONFIRMER |
@@ -51,33 +51,40 @@ horodatée, reportée dans la colonne « Validé par / le ».
 
 ## 3. Implantations
 
-| # | Libellé | Adresse | Source | Statut |
-|---|---|---|---|---|
-| I1 | Paris Ouest | 7 rue Bosio, 75016 Paris | site actuel | À CONFIRMER |
-| I2 | Paris Est | 2 rue de l'Union, 93130 Noisy-le-Sec | site actuel + annuaires | À CONFIRMER |
-| I3 | Paris Sud (variante A) | 11 rue de Courloison, 77160 Provins | site actuel | **CONTRADICTOIRE** |
-| I4 | Paris Sud (variante B) | 6 avenue Alain Peyrefitte, 77160 Provins | site actuel + annuaires (adresse CEGECO) | **CONTRADICTOIRE** |
-| I5 | Siège légal | 90 rue Chaptal, 92300 Levallois-Perret | registres + annuaire OEC | **CONTRADICTOIRE** — absent du site |
-| I6 | Porte de Vincennes | 5 avenue du Général de Gaulle, 94160 Saint-Mandé | annuaires tiers | À CONFIRMER — absent du site |
+**Arbitrage du dirigeant, 9 septembre 2026 : le cabinet ne compte plus qu'un
+seul bureau.** Toutes les autres implantations affichées sur l'ancien site
+n'existent plus.
 
-> Aucune page `/implantations/*` ne sera rédigée avant consolidation de ce tableau.
-> Chaque bureau retenu devra fournir : adresse exacte, horaires, accès/transports,
-> stationnement, équipe locale, zone d'intervention, fiche Google Business Profile associée.
+| # | Adresse | Statut | Traitement |
+|---|---|---|---|
+| I1 | **90 rue Chaptal, 92300 Levallois-Perret** | **CONFIRMÉ** | Seule adresse publiée |
+| I2 | ~~7 rue Bosio, 75016 Paris~~ | **N'EXISTE PLUS** | Retirée — à faire corriger dans les annuaires |
+| I3 | ~~2 rue de l'Union, 93130 Noisy-le-Sec~~ | **N'EXISTE PLUS** | Retirée — à faire corriger dans les annuaires |
+| I4 | ~~11 rue de Courloison, 77160 Provins~~ | **N'EXISTE PLUS** | Retirée |
+| I5 | ~~6 avenue Alain Peyrefitte, 77160 Provins~~ | **N'EXISTE PLUS** | Retirée |
+| I6 | ~~5 avenue du Général de Gaulle, 94160 Saint-Mandé~~ | **N'EXISTE PLUS** | Retirée — à faire corriger dans les annuaires |
+
+> Un test automatisé vérifie à chaque exécution qu'aucune de ces anciennes
+> adresses ne réapparaît sur le site.
+
+**Reste à confirmer pour la seule adresse retenue** : horaires d'ouverture,
+accès et transports, stationnement, existence d'une fiche Google Business
+Profile (questions D3 et D4).
 
 ## 4. Structure et entités liées
 
 | # | Information | Valeur relevée | Source | Statut |
 |---|---|---|---|---|
 | S1 | CEGECO — entité juridique distincte | SAS, SIREN 313 700 353, créée le 01/01/1978, 6 av. Alain Peyrefitte, 77160 Provins | `annuaire-entreprises.data.gouv.fr` | À CONFIRMER |
-| S2 | Nature du lien OFIXIS ↔ CEGECO | inconnue (le site affiche « OFIXIS–Cegeco Paris Sud ») | site actuel | **INTERDIT** de publication avant qualification juridique écrite |
+| S2 | Nature du lien OFIXIS ↔ CEGECO | sans objet pour le site : le bureau de Provins n'existe plus | Dirigeant, 2026-09-09 | **NON PUBLIÉ** — la mention « Paris Sud » a disparu du site. Si un lien devait être affiché un jour, la qualification juridique resterait un préalable |
 | S3 | Autres entités du groupe | — non collecté | — | À CONFIRMER |
 
 ## 5. Chiffres et éléments de preuve
 
 | # | Information | Valeur | Source | Statut |
 |---|---|---|---|---|
-| P1 | Nombre de collaborateurs | 30 | site actuel | À CONFIRMER — exiger date + périmètre (OFIXIS seul ou avec CEGECO) |
-| P2 | Nombre de clients | + 700 | site actuel | À CONFIRMER — exiger date + périmètre + définition de « client » |
+| P1 | Nombre de collaborateurs | ~~30~~ | Dirigeant : les informations de l'ancien site sont erronées | **RETIRÉ** — aucun chiffre publié |
+| P2 | Nombre de clients | ~~+ 700~~ | Dirigeant : les informations de l'ancien site sont erronées | **RETIRÉ** — aucun chiffre publié |
 | P3 | Année de création | 2018 (immatriculation OFIXIS) | registres | À CONFIRMER |
 | P4 | Avis clients / notes | non collectés | — | À CONFIRMER — publication soumise à autorisation et à véracité vérifiable |
 
@@ -89,14 +96,18 @@ horodatée, reportée dans la colonne « Validé par / le ».
 | R2 | Axa | annuaire tiers | **INTERDIT** |
 | R3 | Krys | annuaire tiers | **INTERDIT** |
 | R4 | Orangetheory Fitness | annuaire tiers | **INTERDIT** |
-| R5 | Logos clients affichés sur le site actuel | site actuel | **INTERDIT** |
+| R5 | Logos clients affichés sur l'ancien site | site actuel | **SUPPRIMÉS — décision du dirigeant, 2026-09-09** |
 
 > Double obstacle : **secret professionnel** (révéler l'identité d'un client sans
 > son accord est une faute, indépendamment du droit des marques) et **droit des
 > marques** (l'usage d'un logo suppose une licence écrite).
 > Levée possible uniquement sur production, pour chaque client, d'une autorisation
 > écrite, nominative, datée, précisant le support et la durée.
-> **Recommandation V1 : ne pas reprendre les logos.** Leur substituer des preuves
+> **Décision du dirigeant, 9 septembre 2026 : les logos clients ne sont pas repris**,
+> le risque déontologique vis-à-vis de l'Ordre étant jugé disproportionné au bénéfice.
+> Un test automatisé vérifie qu'aucun de ces noms ne réapparaît sur le site.
+>
+> **Recommandation V1 initiale, maintenue : ne pas reprendre les logos.** Leur substituer des preuves
 > non nominatives et validées (secteurs accompagnés, typologie de missions,
 > ancienneté des relations).
 

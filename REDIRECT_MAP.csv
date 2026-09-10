@@ -1,7 +1,19 @@
 ancienne_url,nouvelle_url,code,statut,source_decouverte,commentaire
-https://www.ofixis.fr/,https://www.ofixis.fr/,200,A_VALIDER,index moteur,Accueil conserve a l identique
-http://www.ofixis.fr/mentions-legales/,https://www.ofixis.fr/mentions-legales,301,A_VALIDER,index moteur,URL indexee en http - verifier la redirection http vers https et la suppression du slash final
-https://www.ofixis.fr/mentions-legales/,https://www.ofixis.fr/mentions-legales,301,A_VALIDER,deduction,Normalisation du slash final
-https://www.ofixis.fr/author/eli-amram/,https://www.ofixis.fr/equipe,301,A_VALIDER,index moteur,Page auteur WordPress - cible a arbitrer selon l identite reelle du compte
-https://www.ofixis.fr/2020/05/03/selarl-ou-centre-dentaire/,https://www.ofixis.fr/actualites/selarl-ou-centre-dentaire,301,A_VALIDER,index moteur,Contenu a reactualiser avant republication - sinon rediriger vers la page mission concernee
-https://www.ofixis.fr/2020/05/06/quels-sont-les-professionnels-de-sante-liberaux-concernes-par-la-prise-en-charge-des-indemnites-journalieres/,https://www.ofixis.fr/actualites,301,A_VALIDER,index moteur,Contenu probablement obsolete (contexte Covid-19) - ne pas republier sans reecriture complete
+https://www.ofixis.fr/,https://www.ofixis.fr/,200,IMPLEMENTE,index moteur,Accueil conserve a l identique
+http://www.ofixis.fr/mentions-legales/,https://www.ofixis.fr/mentions-legales,301,A_CONFIGURER_HEBERGEUR,index moteur,URL indexee en http - la redirection http vers https releve de l hebergement
+https://www.ofixis.fr/mentions-legales/,https://www.ofixis.fr/mentions-legales,308,IMPLEMENTE,deduction,Normalisation du slash final assuree par le framework
+https://www.ofixis.fr/author/eli-amram/,https://www.ofixis.fr/cabinet,308,IMPLEMENTE,index moteur,Page auteur WordPress - cible provisoire vers Le cabinet ; a rediriger vers /equipe lorsque la page existera
+https://www.ofixis.fr/2020/05/03/selarl-ou-centre-dentaire/,https://www.ofixis.fr/actualites,308,IMPLEMENTE,index moteur,Article de 2020 non republie - a rediriger vers l article reactualise s il est reecrit
+https://www.ofixis.fr/2020/05/06/quels-sont-les-professionnels-de-sante-liberaux-concernes-par-la-prise-en-charge-des-indemnites-journalieres/,https://www.ofixis.fr/actualites,308,IMPLEMENTE,index moteur,Contenu lie au contexte Covid-19 - obsolete sur le fond
+https://www.ofixis.fr/AAAA/MM/JJ/*,https://www.ofixis.fr/actualites,308,IMPLEMENTE,motif WordPress,Tous les permaliens dates
+https://www.ofixis.fr/category/*,https://www.ofixis.fr/actualites,308,IMPLEMENTE,motif WordPress,Archives par categorie
+https://www.ofixis.fr/tag/*,https://www.ofixis.fr/actualites,308,IMPLEMENTE,motif WordPress,Archives par etiquette
+https://www.ofixis.fr/author/*,https://www.ofixis.fr/cabinet,308,IMPLEMENTE,motif WordPress,Archives par auteur
+https://www.ofixis.fr/page/N/,https://www.ofixis.fr/actualites,308,IMPLEMENTE,motif WordPress,Pagination des archives
+https://www.ofixis.fr/feed/,https://www.ofixis.fr/actualites/rss.xml,308,IMPLEMENTE,motif WordPress,Flux RSS historique
+https://www.ofixis.fr/comments/feed/,https://www.ofixis.fr/actualites/rss.xml,308,IMPLEMENTE,motif WordPress,Flux des commentaires
+https://www.ofixis.fr/nos-services,https://www.ofixis.fr/missions,308,IMPLEMENTE,hypothese,A confirmer une fois la liste reelle des URLs obtenue
+https://www.ofixis.fr/services,https://www.ofixis.fr/missions,308,IMPLEMENTE,hypothese,A confirmer une fois la liste reelle des URLs obtenue
+https://www.ofixis.fr/nous-contacter,https://www.ofixis.fr/contact,308,IMPLEMENTE,hypothese,A confirmer une fois la liste reelle des URLs obtenue
+https://www.ofixis.fr/qui-sommes-nous,https://www.ofixis.fr/cabinet,308,IMPLEMENTE,hypothese,A confirmer une fois la liste reelle des URLs obtenue
+https://www.ofixis.fr/a-propos,https://www.ofixis.fr/cabinet,308,IMPLEMENTE,hypothese,A confirmer une fois la liste reelle des URLs obtenue
