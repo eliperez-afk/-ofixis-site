@@ -91,7 +91,7 @@ affichée par inadvertance :
 | # | Blocage | Gravité | Levée |
 |---|---|---|---|
 | B1 | **Mentions légales complètes sauf l'assurance RCP** — attestation de l'exercice en cours demandée au courtier, en attente de réception | 🟠 Moyenne | Réception de l'attestation — dernier point bloquant des mentions légales |
-| B2 | **Envoi d'e-mails non configuré** — le formulaire ne peut pas aboutir | 🔴 Élevée | Clé du service d'envoi + adresse destinataire (question E3) |
+| B2 | **Envoi d'e-mails non configuré** — le formulaire ne peut pas aboutir. Destinataire connu (contact@ofixis.fr), reste la clé du service d'envoi et l'authentification du domaine | 🔴 Élevée | Compte chez un service d'envoi + SPF/DKIM sur `ofixis.fr` |
 | B3 | **`www.ofixis.fr` inaccessible** — matrice de redirections incomplète | 🟠 Moyenne | Question A1 : Search Console, sitemap ou ouverture réseau |
 | B4 | Périmètre réel des missions non confirmé | 🟠 Moyenne | Question G1 — 8 pages au statut brouillon |
 | B5 | URL de l'espace client inconnue | 🟠 Moyenne | Question E5 |
@@ -107,10 +107,10 @@ affichée par inadvertance :
 **Côté cabinet**
 1. Relire les 8 pages de mission et confirmer le périmètre de chacune.
 2. Transmettre l'**attestation RCP de l'exercice en cours** (demandée à Verspieren).
-3. Indiquer l'adresse e-mail destinataire des demandes.
+3. Ouvrir un compte chez un service d'envoi d'e-mails et authentifier le
+   domaine `ofixis.fr` (SPF, DKIM) — sans cela le formulaire ne peut pas aboutir.
 4. Indiquer l'URL de l'espace client et, si elle existe, la page Bookings.
-5. Confirmer l'adresse d'exercice des droits RGPD et la durée de conservation
-   des demandes (3 ans proposés par défaut).
+5. Indiquer si un délégué à la protection des données est désigné.
 
 **Côté équipe projet, à réception**
 1. Renseigner et valider les données dans la configuration.
@@ -139,3 +139,4 @@ affichée par inadvertance :
 | 2026-09-10 | **Mentions légales complétées** : TVA FR 64 841 080 971 (clé vérifiée), directeur de la publication, n° OEC 140000548701 et CNCC 4100090432, hébergeur Vercel validé |
 | 2026-09-10 | Traitement du formulaire fixé en région Paris (`cdg1`) : les données saisies ne quittent pas l'Union européenne |
 | 2026-09-10 | Éléments en attente ramenés de 13 à 8 — seule l'assurance RCP bloque encore les mentions légales |
+| 2026-09-10 | **RGPD confirmé** : destinataire contact@ofixis.fr, exercice des droits au siège, conservation 3 ans. Éléments en attente ramenés à 6 |

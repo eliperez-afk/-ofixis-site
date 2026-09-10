@@ -56,7 +56,7 @@ sont pas validées.
 
 - [x] Liens `tel:` vérifiés (`tel:+33650281286`), libellés accessibles
 - [x] Formulaire : validation serveur, limitation de débit, champ leurre, messages explicites
-- [ ] **Notification interne et accusé de réception à tester en réel** — service d'envoi non configuré
+- [ ] **Notification interne et accusé de réception à tester en réel** — destinataire connu (contact@ofixis.fr), service d'envoi à configurer et domaine à authentifier (SPF/DKIM)
 - [x] Aucun faux message de succès en cas d'échec — vérifié par test
 - [x] Mention d'information RGPD et lien vers la politique complète
 - [x] Message « ne transmettez aucune donnée confidentielle » vérifié par test
@@ -82,7 +82,8 @@ sont pas validées.
 
 ## F. Conformité et sécurité
 
-- [ ] Politique de confidentialité complète et **validée juridiquement**
+- [x] Politique de confidentialité complète (responsable, droits, conservation 3 ans, hébergement, région de traitement)
+- [ ] **Relecture juridique** de la politique de confidentialité
 - [ ] Mentions légales à jour
 - [ ] Page accessibilité publiée
 - [x] Aucun traceur, aucun cookie, aucune police distante — aucun bandeau nécessaire

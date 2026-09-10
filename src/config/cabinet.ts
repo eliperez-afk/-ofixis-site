@@ -162,12 +162,25 @@ export const CABINET = {
   // ── Données personnelles ───────────────────────────────────────────────
   rgpd: {
     /** Durée de conservation des demandes entrantes. */
-    conservationProspects: aConfirmer(
+    conservationProspects: confirme(
       "3 ans à compter du dernier contact",
-      "Proposition par défaut — à valider",
+      VALIDATION_COMPLEMENTS,
     ),
-    adresseExerciceDroits: aConfirmer("", "Non communiqué"),
-    delegueProtectionDonnees: aConfirmer<null | string>(null, "Non communiqué"),
+    /**
+     * Adresse à laquelle un visiteur exerce ses droits.
+     * `null` signifie « l'adresse du siège », qui est alors reprise
+     * automatiquement : une seule adresse à corriger en cas de déménagement.
+     */
+    adresseExerciceDroits: confirme<null | string>(null, VALIDATION_COMPLEMENTS),
+    /**
+     * Délégué à la protection des données. `null` signifie qu'aucun DPO
+     * n'est désigné — ce qui est le cas courant pour une structure de cette
+     * taille, la désignation n'étant pas obligatoire ici.
+     */
+    delegueProtectionDonnees: aConfirmer<null | string>(
+      null,
+      "Désignation d'un DPO non confirmée",
+    ),
   },
 
   // ── Liens externes ─────────────────────────────────────────────────────

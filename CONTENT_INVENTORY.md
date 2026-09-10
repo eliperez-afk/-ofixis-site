@@ -59,7 +59,7 @@ horodatée, reportée dans la colonne « Validé par / le ».
 | C2 | ~~01 89 41 04 76~~ | retiré | Dirigeant : donnée erronée | 2026-09-09 | **RETIRÉ DU SITE** |
 | C3 | ~~01 85 05 26 94~~ | retiré | Annuaires tiers — à faire corriger | 2026-09-09 | **RETIRÉ DU SITE** |
 | C4 | E-mail public | **contact@ofixis.fr** | dirigeant | 2026-09-10 | **CONFIRMÉ** |
-| C5 | Destinataires internes des formulaires | — non collecté | — | — | À CONFIRMER |
+| C5 | Destinataire interne des formulaires | **contact@ofixis.fr** | dirigeant | 2026-09-10 | **CONFIRMÉ** |
 | C6 | Délai de rappel réellement tenable | — non collecté | — | — | À CONFIRMER |
 | C7 | Horaires d'ouverture par bureau | — non collecté | — | — | À CONFIRMER |
 | C8 | URL exacte de l'espace client | inconnue — le lien « Connection » semble pointer vers Microsoft | site actuel | 2026-09-09 | À CONFIRMER |
@@ -217,11 +217,11 @@ Profile (questions D3 et D4).
 
 ## 14. RGPD
 
-| # | Élément | Statut |
-|---|---|---|
-| D1 | Responsable de traitement (entité exacte) | À CONFIRMER |
-| D2 | Adresse d'exercice des droits | À CONFIRMER |
-| D3 | DPO désigné ? | À CONFIRMER |
-| D4 | Durée de conservation des prospects | À CONFIRMER |
-| D5 | Sous-traitants et transferts hors UE | À CONFIRMER |
+| # | Élément | Valeur | Statut |
+|---|---|---|---|
+| D1 | Responsable de traitement | **OFIXIS** | **CONFIRMÉ** — Dirigeant, 2026-09-10 |
+| D2 | Adresse d'exercice des droits | **Siège du cabinet + contact@ofixis.fr** | **CONFIRMÉ** — Dirigeant, 2026-09-10 |
+| D3 | DPO désigné ? | non communiqué | À CONFIRMER — non obligatoire pour une structure de cette taille |
+| D4 | Durée de conservation des prospects | **3 ans à compter du dernier contact** | **CONFIRMÉ** — Dirigeant, 2026-09-10 |
+| D5 | Sous-traitants et transferts hors UE | Hébergeur Vercel Inc. (États-Unis), traitement du formulaire fixé en région Paris ; service d'envoi d'e-mails à arrêter | **PARTIELLEMENT CONFIRMÉ** |
 | D6 | Registre des traitements existant | À CONFIRMER |

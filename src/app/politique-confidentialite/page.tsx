@@ -48,8 +48,9 @@ export default function PagePolitiqueConfidentialite() {
             dont le siège est situé {adresseUneLigne()}.
           </p>
           <p>
-            Adresse pour l&apos;exercice de vos droits :{" "}
-            <Valeur donnee={CABINET.rgpd.adresseExerciceDroits} />.
+            Adresse pour l&apos;exercice de vos droits : {CABINET.nom},{" "}
+            {CABINET.rgpd.adresseExerciceDroits.valeur ?? adresseUneLigne()}, ou{" "}
+            {CABINET.email.valeur}.
           </p>
 
           <h2>Quelles données sont collectées</h2>
@@ -115,7 +116,7 @@ export default function PagePolitiqueConfidentialite() {
           <p>
             Les demandes n&apos;ayant pas donné suite à une relation
             contractuelle sont conservées{" "}
-            <Valeur donnee={CABINET.rgpd.conservationProspects} />. Lorsque la
+            {CABINET.rgpd.conservationProspects.valeur}. Lorsque la
             demande débouche sur une mission, les données sont conservées dans le
             cadre du dossier client, selon les durées légales applicables.
           </p>
@@ -128,11 +129,19 @@ export default function PagePolitiqueConfidentialite() {
             votre consentement à tout moment.
           </p>
           <p>
-            Pour exercer ces droits, écrivez à{" "}
-            <Valeur donnee={CABINET.email} /> ou à l&apos;adresse postale du
-            cabinet. Si vous estimez que vos droits ne sont pas respectés, vous
-            pouvez introduire une réclamation auprès de la CNIL
-            (www.cnil.fr).
+            Pour exercer ces droits, écrivez à {CABINET.email.valeur} ou à
+            l&apos;adresse postale du cabinet, {adresseUneLigne()}. Si vous
+            estimez que vos droits ne sont pas respectés, vous pouvez introduire
+            une réclamation auprès de la{" "}
+            <a
+              href="https://www.cnil.fr"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              CNIL
+              <span className="sr-only"> (nouvelle fenêtre)</span>
+            </a>
+            .
           </p>
 
           <h2>Cookies et traceurs</h2>
