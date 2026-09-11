@@ -117,22 +117,40 @@ continue de fonctionner normalement.
 
 ## 2.1 Avant tout : sauvegarder l'existant
 
-Le domaine est chez **IONOS**. Reste à établir **où le site WordPress actuel
-est hébergé** — souvent chez IONOS également, parfois ailleurs.
+**Le domaine et le site WordPress actuel sont tous deux chez IONOS.** C'est
+une bonne nouvelle : la sauvegarde, la zone DNS et le retour arrière se
+pilotent depuis un seul espace client.
 
-Avant toute modification :
+Avant toute modification, trois opérations dans l'espace client IONOS :
 
-1. **Sauvegarde complète** de l'ancien site : fichiers et base de données.
-   Chez IONOS, cela passe par l'espace client (sauvegarde du pack
-   d'hébergement) ou par l'export WordPress.
-2. **Capture d'écran de la zone DNS actuelle**, tous enregistrements visibles.
-   C'est ce qui permettra de tout remettre en état en quelques minutes si
-   nécessaire.
-3. **Vérification** que la sauvegarde se restaure réellement — une sauvegarde
-   jamais testée n'est pas une sauvegarde.
+**1. Sauvegarder le site WordPress — fichiers et base de données.**
 
-**L'ancien site ne sera pas supprimé.** Il restera en sauvegarde après la
-bascule, le temps de s'assurer que tout fonctionne.
+Deux façons de faire, à mener toutes les deux :
+
+- *Sauvegarde du pack d'hébergement* : IONOS propose une sauvegarde
+  automatique dans la section dédiée de l'espace client. Déclenchez-en une
+  manuellement et **téléchargez-la**. Une sauvegarde qui ne reste que chez
+  l'hébergeur disparaît avec le contrat.
+- *Export WordPress* : depuis l'administration WordPress, `Outils` →
+  `Exporter` → `Tout le contenu`. Le fichier obtenu contient articles, pages
+  et médias. Il est petit, lisible, et suffit à reconstruire le contenu
+  ailleurs si besoin.
+
+**2. Relever la zone DNS complète.** `Domaines & SSL` → `ofixis.fr` → `DNS`.
+Faites une capture d'écran de **tous** les enregistrements, sans exception.
+C'est ce document qui permettra de tout remettre en état en quelques minutes.
+
+**3. Vérifier que la sauvegarde se restaure.** Une sauvegarde jamais testée
+n'est pas une sauvegarde. Au minimum, ouvrez l'archive téléchargée et
+vérifiez qu'elle contient bien les fichiers et le fichier de base de données.
+
+> ⚠ **Ne résiliez pas le contrat d'hébergement IONOS après la bascule.**
+> La résiliation supprime les fichiers et la base : le retour arrière
+> deviendrait impossible. Laissez le contrat courir au moins trente jours
+> après la mise en ligne, puis décidez.
+
+**L'ancien site ne sera pas supprimé.** Il reste en place, simplement plus
+adressé par le domaine.
 
 ## 2.2 Préparer : abaisser le TTL
 
@@ -166,9 +184,11 @@ enregistrements de messagerie. D'où l'enregistrement A.
 
 Dans l'espace client IONOS : **Domaines & SSL** → `ofixis.fr` → **DNS**.
 
-1. Si le domaine est « connecté » à un pack d'hébergement ou à un site IONOS,
-   **détachez-le d'abord** : tant qu'il l'est, IONOS ne laisse pas modifier
-   librement les enregistrements.
+1. Le domaine étant actuellement connecté au pack d'hébergement qui porte le
+   WordPress, **détachez-le d'abord** : tant qu'il l'est, IONOS ne laisse pas
+   modifier librement les enregistrements A et CNAME. Cette opération ne
+   supprime rien — elle dissocie simplement le domaine du pack, qui continue
+   d'exister et reste accessible par son adresse technique IONOS.
 2. Modifiez l'enregistrement **A** du domaine nu avec la valeur affichée par Vercel.
 3. Modifiez ou créez le **CNAME** de `www` avec la valeur affichée par Vercel.
 4. **Ne touchez à rien d'autre.**

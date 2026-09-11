@@ -208,7 +208,7 @@ Profile (questions D3 et D4).
 
 | # | Élément | Statut |
 |---|---|---|
-| T1 | Hébergement du site actuel | **À CONFIRMER** — le domaine est chez IONOS, l'hébergement du WordPress reste à établir (nécessaire pour la sauvegarde et le retour arrière) |
+| T1 | Hébergement du site actuel | **IONOS** — confirmé par le dirigeant le 2026-09-11. Domaine et hébergement au même endroit : sauvegarde, DNS et retour arrière pilotés depuis un seul espace client |
 | T2 | Registrar du domaine | **IONOS** — confirmé par le dirigeant le 2026-09-11 |
 | T3 | Google Search Console (propriété vérifiée ?) | À CONFIRMER |
 | T4 | Outil de mesure d'audience actuel | À CONFIRMER |

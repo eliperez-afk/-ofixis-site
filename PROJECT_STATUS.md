@@ -94,8 +94,7 @@ affichée par inadvertance :
 |---|---|---|---|
 | B1 | **Mentions légales complètes sauf l'assurance RCP** — attestation de l'exercice en cours demandée au courtier, en attente de réception | 🟠 Moyenne | Réception de l'attestation — dernier point bloquant des mentions légales |
 | B2 | **Envoi d'e-mails développé mais non raccordé** — code Microsoft Graph en place, restent les identifiants de l'application Entra | 🟠 Moyenne | Suivre `GUIDE_MICROSOFT_365.md` (≈ 30 min) et fournir les 4 valeurs |
-| B3 | **`www.ofixis.fr` inaccessible** — matrice de redirections incomplète | 🟠 Moyenne | Question A1 : Search Console, sitemap ou ouverture réseau |
-| B3b | **Hébergement du WordPress actuel inconnu** — bloque la sauvegarde et la procédure de retour arrière | 🟠 Moyenne | Identifier l'hébergeur (IONOS ou autre) et obtenir l'accès |
+| B3 | **Matrice de redirections incomplète** — `www.ofixis.fr` reste inaccessible depuis l'environnement de développement | 🟠 Moyenne | Le dirigeant ayant accès au WordPress chez IONOS, le sitemap ou la liste des pages peut désormais être extrait directement |
 | B5 | URL de l'espace client inconnue | 🟠 Moyenne | Question E5 |
 | B6 | Page Bookings inexistante | 🟠 Moyenne | Questions F1 à F3 |
 | B7 | Équipe et consentements | 🟠 Moyenne | Question J3 |
@@ -113,8 +112,8 @@ affichée par inadvertance :
    l'application Entra — sans eux le formulaire ne peut pas aboutir.
 4. Transmettre l'attestation RCP de l'exercice en cours dès réception.
 5. Indiquer, si elle existe, la page Microsoft Bookings.
-6. Indiquer chez qui le domaine `ofixis.fr` est enregistré et qui héberge le
-   site actuel — point le plus long à débloquer, à chercher dès maintenant.
+6. Extraire du WordPress la liste des pages existantes (sitemap ou export),
+   pour compléter la matrice de redirections.
 
 **Côté équipe projet, à réception**
 1. Renseigner et valider les données dans la configuration.
@@ -149,6 +148,6 @@ affichée par inadvertance :
 | 2026-09-11 | Jours d'ouverture confirmés : du lundi au vendredi |
 | 2026-09-11 | `POUR_LANCER.md` rédigé — ce qui reste à faire, en langage non technique |
 | 2026-09-11 | **Compte Vercel créé** par le dirigeant (identifiant Apple `eli.perez@outlook.fr`). Reste à y relier le compte GitHub qui porte le dépôt |
-| 2026-09-11 | **Registrar identifié : IONOS.** Hébergement du WordPress actuel encore à établir, nécessaire pour la sauvegarde et le retour arrière |
+| 2026-09-11 | **Registrar et hébergement identifiés : IONOS pour les deux.** Sauvegarde, zone DNS et retour arrière pilotables depuis un seul espace client |
 | 2026-09-11 | Relecture des huit pages de mission validée par le dirigeant — textes passés au statut validé |
 | 2026-09-11 | `GUIDE_DEPLOIEMENT.md` rédigé : préproduction Vercel, puis bascule DNS chez IONOS, avec procédure de retour arrière |

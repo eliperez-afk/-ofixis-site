@@ -19,7 +19,21 @@ Le 308 a l'avantage de préserver la méthode HTTP. Aucune action n'est requise.
 
 ## Ce qu'il faut pour la compléter
 
-Une seule de ces trois sources suffit, par ordre de préférence :
+Le site actuel est hébergé chez **IONOS**, et le cabinet en a l'accès : la
+liste des pages est donc récupérable directement, ce qui n'était pas le cas
+lors de l'audit initial.
+
+Le plus rapide : ouvrir dans un navigateur l'une de ces adresses et en
+transmettre le contenu.
+
+- `https://www.ofixis.fr/wp-sitemap.xml` — plan du site généré par WordPress
+- `https://www.ofixis.fr/sitemap_index.xml` — si l'extension Yoast est installée
+- `https://www.ofixis.fr/sitemap.xml` — autres extensions
+
+À défaut, l'export WordPress (`Outils` → `Exporter` → `Tout le contenu`)
+contient l'intégralité des adresses.
+
+Une seule de ces sources suffit, par ordre de préférence :
 
 1. **Google Search Console** — export « Pages » sur 16 mois. C'est la source la
    plus utile : elle donne les URLs *qui reçoivent réellement du trafic et des
