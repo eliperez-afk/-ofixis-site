@@ -208,13 +208,13 @@ Profile (questions D3 et D4).
 
 | # | Élément | Statut |
 |---|---|---|
-| T1 | Hébergement actuel + accès | À CONFIRMER |
-| T2 | Registrar du domaine + accès DNS | À CONFIRMER |
+| T1 | Hébergement du site actuel | **À CONFIRMER** — le domaine est chez IONOS, l'hébergement du WordPress reste à établir (nécessaire pour la sauvegarde et le retour arrière) |
+| T2 | Registrar du domaine | **IONOS** — confirmé par le dirigeant le 2026-09-11 |
 | T3 | Google Search Console (propriété vérifiée ?) | À CONFIRMER |
 | T4 | Outil de mesure d'audience actuel | À CONFIRMER |
 | T5 | Fiches Google Business Profile (une par bureau ?) | À CONFIRMER |
 | T6 | Prestataire actuel du site | À CONFIRMER |
-| T7 | Licence Microsoft 365 / Bookings | À CONFIRMER |
+| T7 | Microsoft 365 | **Présent** — compte `contact@ofixis.fr`. Application Entra pour l'envoi des e-mails : à créer. Page Bookings : à confirmer |
 | T8 | Sauvegarde de l'existant | À CONFIRMER |
 
 ## 14. RGPD

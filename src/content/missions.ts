@@ -1,16 +1,15 @@
 /**
  * Contenu des pages « missions ».
  *
- * ⚠ STATUT RÉDACTIONNEL : tous les textes sont au statut « brouillon ».
- * Ils décrivent des missions telles qu'elles s'exercent habituellement dans un
- * cabinet d'expertise comptable et de commissariat aux comptes. Ils ne
+ * STATUT RÉDACTIONNEL : textes relus et validés par le dirigeant le
+ * 11 septembre 2026.
+ *
+ * Ils décrivent les missions telles qu'elles s'exercent dans le cabinet. Ils ne
  * contiennent volontairement :
  *   — aucun chiffre, délai, tarif ou engagement propre à OFIXIS ;
  *   — aucune référence client ;
  *   — aucun superlatif ni comparaison avec des confrères (art. 152 et 161
  *     du Code de déontologie).
- * Le périmètre exact de chaque mission doit être confirmé par le cabinet avant
- * mise en production (question G1 du cadrage).
  *
  * Deux missions figurant sur l'ancien site sont volontairement absentes :
  *   — gestion de patrimoine : subordonnée à la vérification des habilitations
@@ -136,7 +135,7 @@ export const MISSIONS: Mission[] = [
       },
     ],
     missionsLiees: ["fiscalite", "pilotage-conseil", "paie-rh"],
-    statutRedaction: "brouillon",
+    statutRedaction: "valide",
   },
 
   {
@@ -220,7 +219,7 @@ export const MISSIONS: Mission[] = [
       "transmission-evaluation",
       "juridique",
     ],
-    statutRedaction: "brouillon",
+    statutRedaction: "valide",
   },
 
   {
@@ -300,7 +299,7 @@ export const MISSIONS: Mission[] = [
       },
     ],
     missionsLiees: ["expertise-comptable", "juridique", "pilotage-conseil"],
-    statutRedaction: "brouillon",
+    statutRedaction: "valide",
   },
 
   {
@@ -392,7 +391,7 @@ export const MISSIONS: Mission[] = [
       },
     ],
     missionsLiees: ["expertise-comptable", "transmission-evaluation"],
-    statutRedaction: "brouillon",
+    statutRedaction: "valide",
   },
 
   {
@@ -477,7 +476,7 @@ export const MISSIONS: Mission[] = [
       },
     ],
     missionsLiees: ["fiscalite", "juridique", "pilotage-conseil"],
-    statutRedaction: "brouillon",
+    statutRedaction: "valide",
   },
 
   {
@@ -558,7 +557,7 @@ export const MISSIONS: Mission[] = [
       },
     ],
     missionsLiees: ["expertise-comptable", "fiscalite", "creation-reprise"],
-    statutRedaction: "brouillon",
+    statutRedaction: "valide",
   },
 
   {
@@ -647,7 +646,7 @@ export const MISSIONS: Mission[] = [
       "fiscalite",
       "juridique",
     ],
-    statutRedaction: "brouillon",
+    statutRedaction: "valide",
   },
 
   {
@@ -716,7 +715,7 @@ export const MISSIONS: Mission[] = [
       },
     ],
     missionsLiees: ["expertise-comptable", "creation-reprise", "paie-rh"],
-    statutRedaction: "brouillon",
+    statutRedaction: "valide",
   },
 ];
 
