@@ -60,23 +60,32 @@ export default function Accueil() {
                 >
                   Appeler le {telephone.affichage}
                 </a>
-                {espaceClient && (
-                  <a
-                    href={espaceClient}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="rounded-douce border border-bordure px-6 py-3.5 text-center font-medium text-ardoise-700 transition-colors hover:border-laiton hover:text-laiton"
-                  >
-                    Espace client
-                    <span className="sr-only"> (nouvelle fenêtre)</span>
-                  </a>
-                )}
               </div>
 
               <p className="mt-5 text-sm text-ardoise-500">
                 Premier échange sans engagement, en cabinet, par téléphone ou en
                 visioconférence.
               </p>
+
+              {/*
+                L'espace client s'adresse aux clients existants, pas aux
+                visiteurs qui découvrent le cabinet : il reste visible dès le
+                premier écran, sans concurrencer les deux actions de contact.
+              */}
+              {espaceClient && (
+                <p className="mt-3 text-sm text-ardoise-500">
+                  Déjà client ?{" "}
+                  <a
+                    href={espaceClient}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-laiton underline underline-offset-2 hover:text-encre"
+                  >
+                    Accéder à l&apos;espace client
+                    <span className="sr-only"> (nouvelle fenêtre)</span>
+                  </a>
+                </p>
+              )}
             </div>
 
             {/* Carte d'informations pratiques */}
