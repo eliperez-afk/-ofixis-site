@@ -18,6 +18,7 @@ type Json = Record<string, unknown>;
 /** Fiche de l'organisation et de son unique établissement. */
 export function jsonLdOrganisation(): Json {
   const adresse = CABINET.adresse.valeur;
+  const horaires = CABINET.horaires;
 
   return {
     "@context": "https://schema.org",
@@ -35,6 +36,21 @@ export function jsonLdOrganisation(): Json {
       addressCountry: "FR",
     },
     areaServed: { "@type": "AdministrativeArea", name: adresse.regionAffichee },
+    // Les horaires ne sont balisés que lorsqu'ils sont confirmés : un horaire
+    // erroné dans une fiche de moteur de recherche envoie un prospect devant
+    // une porte close.
+    ...(horaires.statut === "confirme" && horaires.valeur
+      ? {
+          openingHoursSpecification: [
+            {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: horaires.valeur.jours,
+              opens: horaires.valeur.ouverture,
+              closes: horaires.valeur.fermeture,
+            },
+          ],
+        }
+      : {}),
   };
 }
 

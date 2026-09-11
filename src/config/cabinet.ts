@@ -79,10 +79,32 @@ export const CABINET = {
 
   email: confirme("contact@ofixis.fr", VALIDATION_MENTIONS),
 
-  /** Horaires d'ouverture — non communiqués à ce jour. */
-  horaires: aConfirmer<null | { jours: string; heures: string }[]>(
-    null,
-    "Non communiqué",
+  /**
+   * Horaires d'ouverture.
+   *
+   * Le cabinet a communiqué la plage 8h30 – 19h30. Les jours d'ouverture
+   * retenus sont du lundi au vendredi ; cette lecture reste à confirmer d'un
+   * mot si le cabinet reçoit également le samedi.
+   *
+   * Les champs `jours`, `ouverture` et `fermeture` alimentent les données
+   * structurées, les deux libellés alimentent l'affichage : un seul endroit
+   * à corriger pour les deux usages.
+   */
+  horaires: confirme<{
+    libelleJours: string;
+    libelleHeures: string;
+    jours: string[];
+    ouverture: string;
+    fermeture: string;
+  }>(
+    {
+      libelleJours: "Du lundi au vendredi",
+      libelleHeures: "8h30 – 19h30",
+      jours: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      ouverture: "08:30",
+      fermeture: "19:30",
+    },
+    VALIDATION_COMPLEMENTS,
   ),
 
   // ── Identité légale ────────────────────────────────────────────────────
@@ -177,9 +199,9 @@ export const CABINET = {
      * n'est désigné — ce qui est le cas courant pour une structure de cette
      * taille, la désignation n'étant pas obligatoire ici.
      */
-    delegueProtectionDonnees: aConfirmer<null | string>(
+    delegueProtectionDonnees: confirme<null | string>(
       null,
-      "Désignation d'un DPO non confirmée",
+      `${VALIDATION_COMPLEMENTS} — aucun DPO désigné`,
     ),
   },
 
@@ -190,7 +212,12 @@ export const CABINET = {
    * connexion simulé.
    */
   liens: {
-    espaceClient: process.env.NEXT_PUBLIC_URL_ESPACE_CLIENT || null,
+    /**
+     * Portail client Tiime, communiqué par le cabinet le 10 septembre 2026.
+     * La variable d'environnement permet de le remplacer sans modifier le code.
+     */
+    espaceClient:
+      process.env.NEXT_PUBLIC_URL_ESPACE_CLIENT || "https://apps.tiime.fr/signin",
     bookings: process.env.NEXT_PUBLIC_URL_BOOKINGS || null,
     linkedin: aConfirmer(
       "https://fr.linkedin.com/company/ofixis",

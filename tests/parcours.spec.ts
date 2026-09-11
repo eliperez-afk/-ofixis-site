@@ -121,6 +121,51 @@ test.describe("Formulaire de contact", () => {
   });
 });
 
+test.describe("Espace client", () => {
+  test("le lien pointe vers le portail réel, en sécurité", async ({ page }) => {
+    await page.goto("/");
+    const lien = page.locator('a[href="https://apps.tiime.fr/signin"]').first();
+
+    await expect(lien).toHaveAttribute("target", "_blank");
+    // rel="noopener noreferrer" empêche la page ouverte d'agir sur la nôtre.
+    await expect(lien).toHaveAttribute("rel", /noopener/);
+    await expect(lien).toHaveAttribute("rel", /noreferrer/);
+  });
+
+  test("aucune authentification n'est simulée sur le site", async ({ page }) => {
+    // Le site ne doit comporter aucun champ de mot de passe : la connexion
+    // se fait exclusivement sur le portail du prestataire.
+    for (const chemin of ["/", "/contact", "/cabinet"]) {
+      await page.goto(chemin);
+      await expect(page.locator('input[type="password"]')).toHaveCount(0);
+    }
+  });
+});
+
+test.describe("Horaires", () => {
+  test("les horaires sont affichés et correctement balisés", async ({ page }) => {
+    await page.goto("/");
+
+    await expect(page.getByText("Du lundi au vendredi").first()).toBeVisible();
+    await expect(page.getByText("8h30 – 19h30").first()).toBeVisible();
+
+    const balisage = await page
+      .locator('script[type="application/ld+json"]')
+      .first()
+      .textContent();
+    const donnees = JSON.parse(balisage ?? "{}");
+
+    expect(donnees.openingHoursSpecification?.[0]).toMatchObject({
+      opens: "08:30",
+      closes: "19:30",
+    });
+    expect(donnees.openingHoursSpecification[0].dayOfWeek).toContain("Monday");
+    expect(donnees.openingHoursSpecification[0].dayOfWeek).not.toContain(
+      "Saturday",
+    );
+  });
+});
+
 test.describe("Prise de rendez-vous", () => {
   test("aucun agenda simulé tant que Bookings n'est pas configuré", async ({
     page,

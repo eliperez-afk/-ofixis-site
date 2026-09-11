@@ -203,15 +203,24 @@ export default function PageCabinet() {
                 {adresse.codePostal} {adresse.ville}
               </address>
 
+              {CABINET.horaires.statut === "confirme" && CABINET.horaires.valeur && (
+                <>
+                  <h3 className="mt-6 font-titre text-lg">Horaires</h3>
+                  <p className="mt-3 text-ardoise-700">
+                    {CABINET.horaires.valeur.libelleJours},{" "}
+                    {CABINET.horaires.valeur.libelleHeures}
+                  </p>
+                </>
+              )}
+
               {/*
-                Horaires, accès et stationnement seront ajoutés dès que le
-                cabinet les aura communiqués (question D3 du cadrage).
-                Rien n'est supposé ici : une information d'accès erronée fait
-                perdre un rendez-vous.
+                Accès, transports et stationnement seront ajoutés dès que le
+                cabinet les aura communiqués. Rien n'est supposé ici : une
+                information d'accès erronée fait perdre un rendez-vous.
               */}
               <p className="mt-5 text-sm text-ardoise-500">
-                Horaires et informations d&apos;accès communiqués lors de la
-                prise de rendez-vous.
+                Informations d&apos;accès communiquées lors de la prise de
+                rendez-vous.
               </p>
             </div>
           </div>

@@ -1,6 +1,6 @@
 # OFIXIS — Statut du projet
 
-**Dernière mise à jour :** 10 septembre 2026 (identité légale confirmée)
+**Dernière mise à jour :** 11 septembre 2026
 **Phase en cours :** développement du site — **socle livré et fonctionnel**
 **Prochaine étape :** validation des contenus par le cabinet, puis préproduction hébergée
 
@@ -59,6 +59,7 @@ fait échouer la suite de tests.
 |---|---|---|
 | 1 | Next.js 16 (App Router), React 19, TypeScript strict, Tailwind 4 | Dépôt vide, aucune contrainte héritée ; rendu serveur natif indispensable au SEO |
 | 2 | TypeScript 6 plutôt que 7 | L'analyse statique ne supporte pas encore TS 7 ; TS 6 est la dernière version pleinement outillée |
+| 3b | **Envoi via Microsoft Graph plutôt que SMTP** | La soumission SMTP par authentification basique a été définitivement désactivée par Microsoft le 30 avril 2026 ; Graph est la voie recommandée, sans mot de passe utilisateur stocké |
 | 3 | **Articles en fichiers Markdown versionnés, pas de CMS en V1** | Livre un site complet sans attendre l'arbitrage CMS ni engager d'abonnement. Les champs correspondent au futur schéma : la bascule ne réécrira ni les articles ni les pages |
 | 4 | Source unique de vérité (`src/config/cabinet.ts`) | Réponse directe aux incohérences de l'ancien site |
 | 5 | Barrière `npm run check:contenu -- --prod` | Refuse mécaniquement le déploiement tant qu'une donnée n'est pas validée |
@@ -80,8 +81,9 @@ affichée par inadvertance :
 | **Logos clients** | Aucun | Décision : ne pas en publier |
 | **Numéros OEC et CNCC** | ✅ Publiés (mentions légales et pied de page) | — |
 | **Mentions légales** | ✅ Complètes, sauf l'assurance RCP | Attestation de l'exercice en cours |
-| **Horaires d'ouverture** | Non affichés | Communication par le cabinet |
-| **Espace client** | Bouton absent partout | URL réelle du portail |
+| **Coordonnées de l'assureur** | Non affichées | Attestation en cours de validité |
+| **Horaires d'ouverture** | ✅ Publiés et balisés (accueil, cabinet, contact) | Confirmer les jours si ouverture le samedi |
+| **Espace client** | ✅ Publié — portail Tiime, nouvel onglet sécurisé | — |
 | **Prise de rendez-vous en ligne** | Renvoi vers téléphone et formulaire | URL de la page Bookings |
 | **Articles** | Rubrique vide, message assumé | Rédaction, relecture, passage au statut publié |
 | **Textes des missions** | Publiés, marqués « brouillon » en recette | Validation du périmètre par le cabinet |
@@ -91,7 +93,7 @@ affichée par inadvertance :
 | # | Blocage | Gravité | Levée |
 |---|---|---|---|
 | B1 | **Mentions légales complètes sauf l'assurance RCP** — attestation de l'exercice en cours demandée au courtier, en attente de réception | 🟠 Moyenne | Réception de l'attestation — dernier point bloquant des mentions légales |
-| B2 | **Envoi d'e-mails non configuré** — le formulaire ne peut pas aboutir. Destinataire connu (contact@ofixis.fr), reste la clé du service d'envoi et l'authentification du domaine | 🔴 Élevée | Compte chez un service d'envoi + SPF/DKIM sur `ofixis.fr` |
+| B2 | **Envoi d'e-mails développé mais non raccordé** — code Microsoft Graph en place, restent les identifiants de l'application Entra | 🟠 Moyenne | Suivre `GUIDE_MICROSOFT_365.md` (≈ 30 min) et fournir les 4 valeurs |
 | B3 | **`www.ofixis.fr` inaccessible** — matrice de redirections incomplète | 🟠 Moyenne | Question A1 : Search Console, sitemap ou ouverture réseau |
 | B4 | Périmètre réel des missions non confirmé | 🟠 Moyenne | Question G1 — 8 pages au statut brouillon |
 | B5 | URL de l'espace client inconnue | 🟠 Moyenne | Question E5 |
@@ -107,10 +109,11 @@ affichée par inadvertance :
 **Côté cabinet**
 1. Relire les 8 pages de mission et confirmer le périmètre de chacune.
 2. Transmettre l'**attestation RCP de l'exercice en cours** (demandée à Verspieren).
-3. Ouvrir un compte chez un service d'envoi d'e-mails et authentifier le
-   domaine `ofixis.fr` (SPF, DKIM) — sans cela le formulaire ne peut pas aboutir.
-4. Indiquer l'URL de l'espace client et, si elle existe, la page Bookings.
-5. Indiquer si un délégué à la protection des données est désigné.
+3. Suivre `GUIDE_MICROSOFT_365.md` et fournir les quatre identifiants de
+   l'application Entra — sans eux le formulaire ne peut pas aboutir.
+4. Transmettre l'attestation RCP de l'exercice en cours dès réception.
+5. Indiquer, si elle existe, la page Microsoft Bookings.
+6. Confirmer que le cabinet n'ouvre pas le samedi.
 
 **Côté équipe projet, à réception**
 1. Renseigner et valider les données dans la configuration.
@@ -140,3 +143,5 @@ affichée par inadvertance :
 | 2026-09-10 | Traitement du formulaire fixé en région Paris (`cdg1`) : les données saisies ne quittent pas l'Union européenne |
 | 2026-09-10 | Éléments en attente ramenés de 13 à 8 — seule l'assurance RCP bloque encore les mentions légales |
 | 2026-09-10 | **RGPD confirmé** : destinataire contact@ofixis.fr, exercice des droits au siège, conservation 3 ans. Éléments en attente ramenés à 6 |
+| 2026-09-11 | **Envoi d'e-mails réécrit pour Microsoft Graph.** La soumission SMTP par authentification basique n'est plus utilisable : Microsoft l'a définitivement désactivée le 30 avril 2026 |
+| 2026-09-11 | Horaires publiés et balisés, espace client Tiime raccordé, absence de DPO confirmée. Éléments en attente ramenés de 6 à 4 |

@@ -56,14 +56,16 @@ sont pas validées.
 
 - [x] Liens `tel:` vérifiés (`tel:+33650281286`), libellés accessibles
 - [x] Formulaire : validation serveur, limitation de débit, champ leurre, messages explicites
-- [ ] **Notification interne et accusé de réception à tester en réel** — destinataire connu (contact@ofixis.fr), service d'envoi à configurer et domaine à authentifier (SPF/DKIM)
+- [ ] **Notification interne et accusé de réception à tester en réel** — application Microsoft Entra à inscrire (voir `GUIDE_MICROSOFT_365.md`)
+- [ ] Permission Graph `Mail.Send` **restreinte à la seule boîte d'envoi** (sinon l'application peut écrire depuis toutes les boîtes du locataire)
+- [ ] Date d'expiration du secret client notée dans l'agenda du cabinet
 - [x] Aucun faux message de succès en cas d'échec — vérifié par test
 - [x] Mention d'information RGPD et lien vers la politique complète
 - [x] Message « ne transmettez aucune donnée confidentielle » vérifié par test
 - [ ] Microsoft Bookings testé : choix du service, fuseau Europe/Paris,
       disponibilités, confirmation, annulation, report, création du lien Teams, affichage mobile
 - [ ] **Aucun créneau ni réunion factice en production**
-- [ ] Espace client : URL à fournir — le bouton est absent tant qu'elle manque
+- [x] Espace client : portail Tiime, nouvel onglet, `rel="noopener noreferrer"`, distinct de « Prendre rendez-vous »
 - [x] Barre d'actions mobile : ne masque pas le contenu, zones sûres iOS respectées
 
 ## E. SEO
@@ -135,9 +137,8 @@ sont pas validées.
 ## Reste à faire avant toute mise en ligne — synthèse
 
 1. **Attestation RCP de l'exercice en cours** — seul point encore manquant des mentions légales
-2. **Adresse e-mail destinataire** des demandes et configuration du service d'envoi
-3. **URL de l'espace client**
-4. **Page Microsoft Bookings**, si la prise de rendez-vous en ligne est souhaitée
+2. **Identifiants Microsoft Entra** pour l'envoi des e-mails (`GUIDE_MICROSOFT_365.md`)
+3. **Page Microsoft Bookings**, si la prise de rendez-vous en ligne est souhaitée
 5. **Validation des 8 pages de mission** (périmètre réel)
 6. **Relecture juridique** de la politique de confidentialité
 7. **Finalisation de la CSP** une fois les services tiers arrêtés
@@ -151,7 +152,7 @@ sont pas validées.
 Ces actions ne peuvent pas être réalisées à sa place :
 
 1. Créer ou configurer la page **Microsoft Bookings** (services, durées, personnes, horaires)
-2. Fournir l'**URL réelle du portail espace client**
+2. Inscrire l'**application Microsoft Entra** pour l'envoi des e-mails
 3. Donner accès au **registrar / DNS** ou exécuter la bascule
 4. Revendiquer et vérifier la propriété **Google Search Console**
 5. Créer le compte de **mesure d'audience**

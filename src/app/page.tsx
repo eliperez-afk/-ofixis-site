@@ -114,6 +114,16 @@ export default function Accueil() {
                     </a>
                   </dd>
                 </div>
+                {CABINET.horaires.statut === "confirme" && CABINET.horaires.valeur && (
+                  <div>
+                    <dt className="text-sm text-ardoise-500">Horaires</dt>
+                    <dd className="mt-1 text-ardoise-900">
+                      {CABINET.horaires.valeur.libelleJours}
+                      <br />
+                      {CABINET.horaires.valeur.libelleHeures}
+                    </dd>
+                  </div>
+                )}
                 <div>
                   <dt className="text-sm text-ardoise-500">Interventions</dt>
                   <dd className="mt-1 text-ardoise-900">

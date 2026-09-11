@@ -67,6 +67,16 @@ export default function PageContact() {
                 </dd>
               </div>
 
+              {CABINET.horaires.statut === "confirme" && CABINET.horaires.valeur && (
+                <div>
+                  <dt className="text-sm text-ardoise-500">Horaires</dt>
+                  <dd className="mt-1 text-ardoise-900">
+                    {CABINET.horaires.valeur.libelleJours},{" "}
+                    {CABINET.horaires.valeur.libelleHeures}
+                  </dd>
+                </div>
+              )}
+
               <div>
                 <dt className="text-sm text-ardoise-500">Adresse</dt>
                 <dd className="mt-1">

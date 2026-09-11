@@ -47,6 +47,7 @@ restent simplement masquées ou signalent explicitement leur indisponibilité.
 | [`REDIRECT_MAP.csv`](REDIRECT_MAP.csv) | Les redirections préservant le référencement acquis |
 | [`LAUNCH_CHECKLIST.md`](LAUNCH_CHECKLIST.md) | Ce qui doit être vérifié avant la mise en ligne |
 | [`GUIDE_PUBLICATION.md`](GUIDE_PUBLICATION.md) | **Publier une actualité** — guide non technique |
+| [`GUIDE_MICROSOFT_365.md`](GUIDE_MICROSOFT_365.md) | **Raccorder l'envoi des e-mails** à Microsoft 365 |
 | [`RAPPORT_TESTS.md`](RAPPORT_TESTS.md) | Tests, accessibilité, performance et sécurité |
 
 ## Règles de travail

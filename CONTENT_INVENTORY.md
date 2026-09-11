@@ -43,9 +43,11 @@ horodatée, reportée dans la colonne « Validé par / le ».
 > **Pièce attendue : l'attestation d'assurance RC professionnelle de
 > l'exercice en cours**, qui porte l'assureur, le numéro de police, la période
 > de validité et la couverture géographique.
-> Le dirigeant a confirmé le 10 septembre 2026 qu'il la demande à son courtier
-> Verspieren. **En attente de réception** — seul élément des mentions légales
-> encore bloquant.
+> Le dirigeant a indiqué le 11 septembre 2026 ne pas disposer de l'attestation
+> pour le moment. **Seul élément des mentions légales encore bloquant.**
+> En son absence, la page indique que le cabinet est couvert — ce qui est une
+> obligation pour tout professionnel inscrit — sans nommer d'assureur ni de
+> numéro de police.
 
 > **L5/L6 sont bloquants avant mise en production.** Des mentions légales
 > inexactes contreviennent à l'article 6-III de la LCEN et fragilisent
@@ -61,8 +63,8 @@ horodatée, reportée dans la colonne « Validé par / le ».
 | C4 | E-mail public | **contact@ofixis.fr** | dirigeant | 2026-09-10 | **CONFIRMÉ** |
 | C5 | Destinataire interne des formulaires | **contact@ofixis.fr** | dirigeant | 2026-09-10 | **CONFIRMÉ** |
 | C6 | Délai de rappel réellement tenable | — non collecté | — | — | À CONFIRMER |
-| C7 | Horaires d'ouverture par bureau | — non collecté | — | — | À CONFIRMER |
-| C8 | URL exacte de l'espace client | inconnue — le lien « Connection » semble pointer vers Microsoft | site actuel | 2026-09-09 | À CONFIRMER |
+| C7 | Horaires d'ouverture | **8h30 – 19h30** | dirigeant | 2026-09-11 | **CONFIRMÉ** pour les heures. Jours retenus : du lundi au vendredi — lecture à confirmer d'un mot si le cabinet reçoit aussi le samedi |
+| C8 | URL de l'espace client | **https://apps.tiime.fr/signin** (portail Tiime) | dirigeant | 2026-09-11 | **CONFIRMÉ** — ouverture dans un nouvel onglet, `rel="noopener noreferrer"` |
 | C9 | LinkedIn du cabinet | `fr.linkedin.com/company/ofixis` | résultat de recherche | 2026-09-09 | À CONFIRMER |
 
 ## 3. Implantations
@@ -145,7 +147,7 @@ Profile (questions D3 et D4).
 
 | # | Outil | Source | Statut |
 |---|---|---|---|
-| O1 | Logiciel de facturation | site actuel | À CONFIRMER — quel éditeur peut être nommé publiquement ? |
+| O1 | Logiciel de facturation | site actuel | À CONFIRMER — quel éditeur peut être nommé publiquement ? L'espace client étant le portail **Tiime**, le nom de l'éditeur est de fait visible du client ; son emploi dans les textes commerciaux reste à valider |
 | O2 | Application mobile | site actuel | À CONFIRMER |
 | O3 | Drive documentaire | site actuel | À CONFIRMER |
 | O4 | Synchronisation bancaire | site actuel | À CONFIRMER |
@@ -221,7 +223,7 @@ Profile (questions D3 et D4).
 |---|---|---|---|
 | D1 | Responsable de traitement | **OFIXIS** | **CONFIRMÉ** — Dirigeant, 2026-09-10 |
 | D2 | Adresse d'exercice des droits | **Siège du cabinet + contact@ofixis.fr** | **CONFIRMÉ** — Dirigeant, 2026-09-10 |
-| D3 | DPO désigné ? | non communiqué | À CONFIRMER — non obligatoire pour une structure de cette taille |
+| D3 | DPO désigné ? | **Aucun** | **CONFIRMÉ** — Dirigeant, 2026-09-11. Non obligatoire pour une structure de cette taille |
 | D4 | Durée de conservation des prospects | **3 ans à compter du dernier contact** | **CONFIRMÉ** — Dirigeant, 2026-09-10 |
 | D5 | Sous-traitants et transferts hors UE | Hébergeur Vercel Inc. (États-Unis), traitement du formulaire fixé en région Paris ; service d'envoi d'e-mails à arrêter | **PARTIELLEMENT CONFIRMÉ** |
 | D6 | Registre des traitements existant | À CONFIRMER |
