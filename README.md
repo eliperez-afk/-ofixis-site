@@ -38,6 +38,7 @@ restent simplement masquées ou signalent explicitement leur indisponibilité.
 
 | Document | À lire pour |
 |---|---|
+| [`POUR_LANCER.md`](POUR_LANCER.md) | **Ce qu'il reste à faire pour mettre le site en ligne** — à lire en premier |
 | [`PROJECT_STATUS.md`](PROJECT_STATUS.md) | L'état d'avancement, les décisions et les blocages |
 | [`AUDIT_PHASE0.md`](AUDIT_PHASE0.md) | Ce que révèle l'audit du site existant |
 | [`QUESTIONS_CADRAGE.md`](QUESTIONS_CADRAGE.md) | **Les questions auxquelles le cabinet doit répondre** |

@@ -113,7 +113,8 @@ affichée par inadvertance :
    l'application Entra — sans eux le formulaire ne peut pas aboutir.
 4. Transmettre l'attestation RCP de l'exercice en cours dès réception.
 5. Indiquer, si elle existe, la page Microsoft Bookings.
-6. Confirmer que le cabinet n'ouvre pas le samedi.
+6. Indiquer chez qui le domaine `ofixis.fr` est enregistré et qui héberge le
+   site actuel — point le plus long à débloquer, à chercher dès maintenant.
 
 **Côté équipe projet, à réception**
 1. Renseigner et valider les données dans la configuration.
@@ -145,3 +146,5 @@ affichée par inadvertance :
 | 2026-09-10 | **RGPD confirmé** : destinataire contact@ofixis.fr, exercice des droits au siège, conservation 3 ans. Éléments en attente ramenés à 6 |
 | 2026-09-11 | **Envoi d'e-mails réécrit pour Microsoft Graph.** La soumission SMTP par authentification basique n'est plus utilisable : Microsoft l'a définitivement désactivée le 30 avril 2026 |
 | 2026-09-11 | Horaires publiés et balisés, espace client Tiime raccordé, absence de DPO confirmée. Éléments en attente ramenés de 6 à 4 |
+| 2026-09-11 | Jours d'ouverture confirmés : du lundi au vendredi |
+| 2026-09-11 | `POUR_LANCER.md` rédigé — ce qui reste à faire, en langage non technique |

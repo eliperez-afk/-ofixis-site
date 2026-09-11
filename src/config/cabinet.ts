@@ -82,9 +82,8 @@ export const CABINET = {
   /**
    * Horaires d'ouverture.
    *
-   * Le cabinet a communiqué la plage 8h30 – 19h30. Les jours d'ouverture
-   * retenus sont du lundi au vendredi ; cette lecture reste à confirmer d'un
-   * mot si le cabinet reçoit également le samedi.
+   * Du lundi au vendredi, 8h30 – 19h30. Jours et heures confirmés par le
+   * dirigeant les 10 et 11 septembre 2026.
    *
    * Les champs `jours`, `ouverture` et `fermeture` alimentent les données
    * structurées, les deux libellés alimentent l'affichage : un seul endroit

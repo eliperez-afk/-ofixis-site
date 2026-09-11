@@ -63,7 +63,7 @@ horodatée, reportée dans la colonne « Validé par / le ».
 | C4 | E-mail public | **contact@ofixis.fr** | dirigeant | 2026-09-10 | **CONFIRMÉ** |
 | C5 | Destinataire interne des formulaires | **contact@ofixis.fr** | dirigeant | 2026-09-10 | **CONFIRMÉ** |
 | C6 | Délai de rappel réellement tenable | — non collecté | — | — | À CONFIRMER |
-| C7 | Horaires d'ouverture | **8h30 – 19h30** | dirigeant | 2026-09-11 | **CONFIRMÉ** pour les heures. Jours retenus : du lundi au vendredi — lecture à confirmer d'un mot si le cabinet reçoit aussi le samedi |
+| C7 | Horaires d'ouverture | **Du lundi au vendredi, 8h30 – 19h30** | dirigeant | 2026-09-11 | **CONFIRMÉ** — jours et heures |
 | C8 | URL de l'espace client | **https://apps.tiime.fr/signin** (portail Tiime) | dirigeant | 2026-09-11 | **CONFIRMÉ** — ouverture dans un nouvel onglet, `rel="noopener noreferrer"` |
 | C9 | LinkedIn du cabinet | `fr.linkedin.com/company/ofixis` | résultat de recherche | 2026-09-09 | À CONFIRMER |
 
