@@ -23,6 +23,26 @@ révocable à tout moment sans toucher à un compte.
 
 ---
 
+## Deux façons de procéder
+
+**À la main**, en suivant ce guide écran par écran — c'est la voie décrite
+ci-dessous, et celle à privilégier si vous n'êtes pas à l'aise avec PowerShell.
+
+**Par script** : `scripts/configurer-microsoft-365.ps1` enchaîne les étapes 2
+à 5 et affiche les valeurs à reporter.
+
+```powershell
+./scripts/configurer-microsoft-365.ps1 -BoiteExpeditrice site@ofixis.fr -WhatIf   # simulation
+./scripts/configurer-microsoft-365.ps1 -BoiteExpeditrice site@ofixis.fr           # exécution
+```
+
+> Ce script n'a pas pu être essayé contre un locataire Microsoft réel lors de
+> sa rédaction — je n'ai accès à aucun. Lisez-le avant de le lancer et
+> commencez par `-WhatIf`. Le résultat est strictement identique à la
+> procédure manuelle.
+
+---
+
 ## Étape 1 — Créer la boîte d'envoi
 
 Créez une boîte aux lettres dédiée, par exemple **site@ofixis.fr**.
@@ -49,40 +69,71 @@ Relevez, sur la page d'aperçu :
 - l'**ID d'application (client)** → `MS_CLIENT_ID`
 - l'**ID de l'annuaire (locataire)** → `MS_TENANT_ID`
 
-## Étape 3 — Accorder la permission d'envoi
+## Étape 3 — Ne PAS accorder de permission dans Entra
 
-Dans l'application → *API autorisées* → **Ajouter une autorisation** :
+Contrairement à ce que l'on trouve souvent, **n'ajoutez aucune autorisation
+d'API à l'application**. Ne cochez pas `Mail.Send`, n'accordez aucun
+consentement administrateur.
 
-1. **Microsoft Graph**
-2. **Autorisations d'application** (et non déléguées : il n'y a pas
-   d'utilisateur connecté derrière un formulaire de site)
-3. Cocher **`Mail.Send`**
-4. Valider, puis cliquer sur **Accorder le consentement administrateur**
+C'est contre-intuitif, et c'est pourtant le point le plus important de ce
+guide. Voici pourquoi.
 
-Le statut doit afficher une coche verte. Sans ce consentement, rien ne part.
+Une permission `Mail.Send` accordée dans Entra vaut **pour toutes les boîtes
+du locataire**, sans exception possible. Elle peut être restreinte — mais
+uniquement par le mécanisme historique des *application access policies*, que
+Microsoft remplace et déconseille désormais pour les nouvelles configurations.
 
-## Étape 4 — Restreindre l'application à la seule boîte d'envoi
+Le mécanisme actuel, le contrôle d'accès basé sur les rôles côté Exchange
+(étape 4), permet d'accorder la permission **directement sur une seule boîte**.
+Mais — et c'est le piège — les deux systèmes **s'additionnent**. Microsoft le
+documente explicitement : si l'application détient une permission `Mail.Send`
+non restreinte dans Entra *et* une permission limitée à une boîte côté
+Exchange, le résultat est une permission non restreinte. La restriction ne
+sert alors à rien.
 
-**Cette étape n'est pas facultative.**
+**Donc : aucune permission dans Entra, tout se joue à l'étape 4.**
 
-Par défaut, la permission `Mail.Send` accordée au niveau application autorise
-l'envoi **depuis n'importe quelle boîte du locataire** — y compris celle du
-dirigeant. Pour un cabinet tenu au secret professionnel, laisser une clé de
-site web dans cet état serait imprudent.
+> Si une permission `Mail.Send` a déjà été accordée dans Entra lors d'un essai
+> précédent, retirez-la avant de continuer — sinon la restriction de
+> l'étape 4 restera sans effet.
 
-Microsoft recommande désormais le **contrôle d'accès basé sur les rôles pour
-les applications Exchange** (RBAC for Applications), qui remplace les
-anciennes *application access policies*. Il se configure depuis le centre
-d'administration Exchange, sous *Rôles* → *Rôles d'application*, en créant une
-attribution qui :
+## Étape 4 — Accorder la permission sur la seule boîte d'envoi
 
-- désigne l'application inscrite à l'étape 2 ;
-- lui attribue le rôle **Application Mail.Send** ;
-- limite sa portée à un **périmètre de destinataires** ne contenant que la
-  boîte `site@ofixis.fr`.
+Cette étape se fait en PowerShell, module `ExchangeOnlineManagement`. Elle
+demande le rôle **Administrateur Exchange** ou l'appartenance au groupe
+**Organization Management**.
 
-Après cette restriction, une tentative d'envoi depuis une autre boîte est
-refusée par Exchange, même si l'application le demandait.
+```powershell
+Connect-ExchangeOnline
+
+# 1. Créer le pointeur vers l'application Entra
+New-ServicePrincipal -AppId "<MS_CLIENT_ID>" `
+                     -ObjectId "<ID d'objet du principal de service>" `
+                     -DisplayName "Site ofixis.fr"
+
+# 2. Délimiter le périmètre à la seule boîte d'envoi
+New-ManagementScope -Name "Portee site ofixis" `
+                    -RecipientRestrictionFilter "PrimarySmtpAddress -eq 'site@ofixis.fr'"
+
+# 3. Attribuer le rôle, restreint à ce périmètre
+New-ManagementRoleAssignment -Name "Site ofixis - envoi" `
+                             -Role "Application Mail.Send" `
+                             -App "<MS_CLIENT_ID>" `
+                             -CustomResourceScope "Portee site ofixis"
+
+# 4. Vérifier
+Test-ServicePrincipalAuthorization -Identity "<MS_CLIENT_ID>" -Resource "site@ofixis.fr"
+```
+
+`Test-ServicePrincipalAuthorization` contourne le cache de permissions et
+donne une réponse immédiate. Sans lui, comptez de 30 minutes à 2 heures avant
+qu'un changement de permission soit effectif.
+
+Le script `scripts/configurer-microsoft-365.ps1` enchaîne l'ensemble de ces
+opérations, étapes 2 à 5 comprises.
+
+Après cette configuration, une tentative d'envoi depuis une autre boîte que
+`site@ofixis.fr` est refusée par Exchange.
 
 ## Étape 5 — Créer le secret client
 
@@ -148,7 +199,7 @@ seulement ceux du site.
 | Symptôme | Cause la plus probable |
 |---|---|
 | « Authentification Microsoft refusée » | Secret expiré ou erroné, ou mauvais `MS_TENANT_ID` |
-| Erreur 403 sur l'envoi | Consentement administrateur non accordé, ou restriction de l'étape 4 excluant la boîte d'envoi |
+| Erreur 403 sur l'envoi | Rôle Exchange non attribué, périmètre excluant la boîte d'envoi, ou cache de permissions pas encore rafraîchi (jusqu'à 2 heures — utilisez `Test-ServicePrincipalAuthorization`) |
 | Erreur 404 sur l'envoi | `MS_BOITE_EXPEDITRICE` ne correspond à aucune boîte du locataire |
 | Le visiteur voit un message d'erreur | Normal si l'envoi a échoué : le site ne simule jamais un succès. Consultez les journaux du serveur, où seule la cause technique est enregistrée — jamais le contenu de la demande |
 

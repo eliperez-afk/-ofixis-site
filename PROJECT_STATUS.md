@@ -1,6 +1,6 @@
 # OFIXIS — Statut du projet
 
-**Dernière mise à jour :** 11 septembre 2026
+**Dernière mise à jour :** 15 septembre 2026
 **Phase en cours :** développement du site — **socle livré et fonctionnel**
 **Prochaine étape :** validation des contenus par le cabinet, puis préproduction hébergée
 
@@ -93,7 +93,7 @@ affichée par inadvertance :
 | # | Blocage | Gravité | Levée |
 |---|---|---|---|
 | B1 | **Mentions légales complètes sauf l'assurance RCP** — attestation de l'exercice en cours demandée au courtier, en attente de réception | 🟠 Moyenne | Réception de l'attestation — dernier point bloquant des mentions légales |
-| B2 | **Envoi d'e-mails développé mais non raccordé** — code Microsoft Graph en place, restent les identifiants de l'application Entra | 🟠 Moyenne | Suivre `GUIDE_MICROSOFT_365.md` (≈ 30 min) et fournir les 4 valeurs |
+| B2 | **Envoi d'e-mails développé mais non raccordé** — code Microsoft Graph en place, restent les identifiants de l'application Entra | 🟠 Moyenne | Suivre `GUIDE_MICROSOFT_365.md` ou lancer `scripts/configurer-microsoft-365.ps1`. Opération à mener par le cabinet : l'environnement de développement n'a accès ni à Entra ni à Graph |
 | B3 | **Matrice de redirections incomplète** — `www.ofixis.fr` reste inaccessible depuis l'environnement de développement | 🟠 Moyenne | Le dirigeant ayant accès au WordPress chez IONOS, le sitemap ou la liste des pages peut désormais être extrait directement |
 | B5 | URL de l'espace client inconnue | 🟠 Moyenne | Question E5 |
 | B6 | Page Bookings inexistante | 🟠 Moyenne | Questions F1 à F3 |
@@ -151,3 +151,6 @@ affichée par inadvertance :
 | 2026-09-11 | **Registrar et hébergement identifiés : IONOS pour les deux.** Sauvegarde, zone DNS et retour arrière pilotables depuis un seul espace client |
 | 2026-09-11 | Relecture des huit pages de mission validée par le dirigeant — textes passés au statut validé |
 | 2026-09-11 | `GUIDE_DEPLOIEMENT.md` rédigé : préproduction Vercel, puis bascule DNS chez IONOS, avec procédure de retour arrière |
+| 2026-09-14 | **Préproduction déployée sur Vercel** par le dirigeant. Le site est en ligne, non indexé, avec le bandeau de recette |
+| 2026-09-15 | **Correction de sécurité dans `GUIDE_MICROSOFT_365.md`** : la procédure initiale accordait `Mail.Send` dans Entra puis la restreignait côté Exchange. Or Microsoft documente que les deux mécanismes s'additionnent — une permission Entra non restreinte annule la restriction Exchange. La procédure n'accorde plus aucune permission Entra : tout passe par le rôle Exchange restreint à une seule boîte |
+| 2026-09-15 | `scripts/configurer-microsoft-365.ps1` ajouté — non essayé contre un locataire réel, faute d'accès |
